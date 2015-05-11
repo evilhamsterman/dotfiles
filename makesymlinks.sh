@@ -11,12 +11,13 @@ do
 
   # Check if file currently exists in $HOME and backup if it does
   if [[ -f $DOTPATH ]]; then
-    echo "File $DOTFILE exists backing up"
-    mv $DOTPATH $BACKUP/$FILENAME.`date +%Y%m%d%H%M`
+    if [[ ! -h $DOTPATH ]]; then
+      echo "File $DOTFILE exists backing up"
+      mv $DOTPATH $BACKUP/$FILENAME.`date +%Y%m%d%H%M`
+    fi
   fi
 
   # Symlink the file into $HOME
-  echo "Creating symlink"
-  ln -s `pwd`/$f $DOTPATH
-
+  echo "Symlinking $f"
+  ln -sf `pwd`/$f $DOTPATH
 done
