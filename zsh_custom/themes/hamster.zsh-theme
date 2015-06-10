@@ -8,7 +8,7 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
 # Color Variables
 # Check if we are on a remote connection or local
-if [[ "${SSH_CONNECTION+1}" ]]; then
+if [ "${SSH_CONNECTION+1}" ]; then
 	eval my_fg='$FG[002]'
 else
 	eval my_fg='$FG[032]'
