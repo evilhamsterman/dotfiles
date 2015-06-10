@@ -45,7 +45,27 @@ ZSH_CUSTOM=$HOME/.dotfiles/zsh_custom/
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux systemd colored-man cp pip python virtualenv virtualenvwrapper sudo)
+
+# Default plugins
+plugins=(colored-man rsync python virtualenv)
+
+# Add plugins if the appropriate executable exists
+# example: add_plugin <exec> <plugin>
+function add_plugin(){
+  which $1 > /dev/null 2>&1
+  if [[ $? == 0 ]]; then
+    plugins=($plugins $2)
+  fi
+}
+add_plugin git git
+add_plugin yaourt archlinux
+add_plugin systemctl systemd
+add_plugin pip pip
+add_plugin virtualenvwrapper.sh virtualenvwrapper
+add_plugin sudo sudo
+
+echo "Loaded Plugins $plugins"
+
 
 # User configuration
 
