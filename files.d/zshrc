@@ -63,6 +63,8 @@ add_plugin systemctl systemd
 add_plugin pip pip
 add_plugin virtualenvwrapper.sh virtualenvwrapper
 add_plugin sudo sudo
+add_plugin brew brew
+add_plugin sw_vers osx
 
 echo "Loaded Plugins $plugins"
 
