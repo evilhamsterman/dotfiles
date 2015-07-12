@@ -78,6 +78,8 @@ if [[ -n "$DESKTOP_SESSION" ]]; then
   export EDITOR='atom --wait'
   eval $(gnome-keyring-daemon --start)
   export SSH_AUTH_SOCK
+elif [[ -f /usr/bin/sw_vers ]]; then
+  export EDITOR='atom --wait'
 else
   export EDITOR='vim'
 fi
