@@ -73,8 +73,11 @@ echo "Loaded Plugins $plugins"
 
 export PATH=$PATH:$HOME/bin
 
-if [[ -n "${XAUTHORITY+1}" ]]; then
+# Set options depending if we are in a GUI or not
+if [[ -n "$DESKTOP_SESSION" ]]; then
   export EDITOR='atom --wait'
+  eval $(gnome-keyring-daemon --start)
+  export SSH_AUTH_SOCK
 else
   export EDITOR='vim'
 fi
