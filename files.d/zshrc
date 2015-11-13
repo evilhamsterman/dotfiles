@@ -116,4 +116,4 @@ alias df="df -h"
 alias sedit="sudoedit"
 
 # Java font settings
-_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd'
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
