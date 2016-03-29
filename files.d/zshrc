@@ -65,6 +65,7 @@ add_plugin virtualenvwrapper.sh virtualenvwrapper
 add_plugin sudo sudo
 add_plugin brew brew
 add_plugin sw_vers osx
+add_plugin yum yum
 
 echo "Loaded Plugins $plugins"
 
