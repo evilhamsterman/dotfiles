@@ -58,7 +58,7 @@ function add_plugin(){
   fi
 }
 add_plugin git git
-add_plugin yaourt archlinux
+add_plugin pacman archlinux
 add_plugin systemctl systemd
 add_plugin pip pip
 add_plugin virtualenvwrapper.sh virtualenvwrapper
