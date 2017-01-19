@@ -82,6 +82,7 @@ if [[ -n "$DESKTOP_SESSION" ]]; then
 elif [[ -f /usr/bin/sw_vers ]]; then
   export EDITOR='atom --wait'
 else
+  eval $(ssh-agent)
   export EDITOR='vim'
 fi
 
