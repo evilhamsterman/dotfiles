@@ -66,6 +66,7 @@ add_plugin sudo sudo
 add_plugin brew brew
 add_plugin sw_vers osx
 add_plugin yum yum
+add_plugin mosh mosh
 
 echo "Loaded Plugins $plugins"
 
