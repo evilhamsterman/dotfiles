@@ -77,11 +77,11 @@ export PATH=$PATH:$HOME/bin
 
 # Set options depending if we are in a GUI or not
 if [[ -n "$DESKTOP_SESSION" ]]; then
-  export EDITOR='atom --wait'
+  export EDITOR='code --wait'
   eval $(gnome-keyring-daemon --start)
   export SSH_AUTH_SOCK
 elif [[ -f /usr/bin/sw_vers ]]; then
-  export EDITOR='atom --wait'
+  export EDITOR='code --wait'
 else
   eval $(ssh-agent)
   export EDITOR='vim'
