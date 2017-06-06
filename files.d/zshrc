@@ -76,12 +76,15 @@ echo "Loaded Plugins $plugins"
 export PATH=$PATH:$HOME/bin
 
 # Set options depending if we are in a GUI or not
+# Check if Linux GUI
 if [[ -n "$DESKTOP_SESSION" ]]; then
   export EDITOR='code --wait'
   eval $(gnome-keyring-daemon --start)
   export SSH_AUTH_SOCK
+# Check if OSX
 elif [[ -f /usr/bin/sw_vers ]]; then
   export EDITOR='code --wait'
+# assume we are in a terminal
 else
   eval $(ssh-agent)
   export EDITOR='vim'
