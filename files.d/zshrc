@@ -61,7 +61,6 @@ add_plugin git git
 add_plugin pacman archlinux
 add_plugin systemctl systemd
 add_plugin pip pip
-add_plugin virtualenv
 add_plugin virtualenvwrapper.sh virtualenvwrapper
 add_plugin sudo sudo
 add_plugin brew brew
