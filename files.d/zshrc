@@ -87,7 +87,7 @@ elif [[ -f /usr/bin/sw_vers ]]; then
   export EDITOR='code --wait'
 # assume we are in a terminal
 else
-  eval $(ssh-agent)
+  add_plugin ssh-agent ssh-agent
   export EDITOR='vim'
 fi
 
