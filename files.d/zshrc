@@ -47,7 +47,7 @@ ZSH_CUSTOM=$HOME/.dotfiles/zsh_custom/
 # Add wisely, as too many plugins slow down shell startup.
 
 # Default plugins
-plugins=(colored-man rsync python virtualenv)
+plugins=(colored-man rsync python)
 
 # Add plugins if the appropriate executable exists
 # example: add_plugin <exec> <plugin>
@@ -61,6 +61,7 @@ add_plugin git git
 add_plugin pacman archlinux
 add_plugin systemctl systemd
 add_plugin pip pip
+add_plugin virtualenv
 add_plugin virtualenvwrapper.sh virtualenvwrapper
 add_plugin sudo sudo
 add_plugin brew brew
