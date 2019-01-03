@@ -1,40 +1,24 @@
+# Set Dotfile dir
+export DOTFILES=~/.dotfiles
 
+# Load bashcompletion
+autoload -Uz compinit
+compinit
 
-# User configuration
+# Initialize antibody
+source <(antibody init)
 
-export PATH=$PATH:$HOME/bin
+# Setup common features
+source $DOTFILES/common.d/source.sh
 
-# Set options depending if we are in a GUI or not
-# Check if Linux GUI
-if [[ -n "$DESKTOP_SESSION" ]]; then
-  export EDITOR='code --wait'
-  eval $(gnome-keyring-daemon --start)
-  export SSH_AUTH_SOCK
-# Check if OSX
-elif [[ -f /usr/bin/sw_vers ]]; then
-  export EDITOR='code --wait'
-# assume we are in a terminal
-else
-  export EDITOR='vim'
-fi
+# Set options depending on environment
+OS=`uname`
 
-alias df="df -h"
-alias sedit="sudoedit"
-
-# Setup shortcuts for 1Password
-
-which op > /dev/null 2>&1
-if [[ $? == 0 ]]; then
-  OPSESSION_FILE=$HOME/.opsession
-  if [ -f $OPSESSION_FILE ]
-  then
-    echo "Using existing 1Password Session"
-    source $OPSESSION_FILE
-  fi
-  function loginop()
-  {
-    op signin qumulo > $OPSESSION_FILE
-    chmod go-rwx $OPSESSION_FILE
-    source $OPSESSION_FILE
-  }
-fi
+case "$OS" in
+  Linux)
+    source $DOTFILES/linux.d/source.sh
+  ;;
+  Darwin)
+    source $DOTFILES/osx.d/source.sh
+  ;;
+esac
