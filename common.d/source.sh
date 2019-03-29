@@ -1,6 +1,9 @@
 # Setup common plugins and theme
 # The following lines were added by compinstall
 
+# Add $HOME/bin to $PATH
+export PATH=$PATH:$HOME/.local/bin
+
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*'
 zstyle :compinstall filename "$HOME/.zshrc"
@@ -32,8 +35,6 @@ zle -N down-line-or-beginning-search
 bindkey "^[OA" up-line-or-beginning-search # Up
 bindkey "^[OB" down-line-or-beginning-search # Down
 
-# Add $HOME/bin to $PATH
-export PATH=$PATH:$HOME/bin
 
 # Set vim as editor by default
 export EDITOR='vim'

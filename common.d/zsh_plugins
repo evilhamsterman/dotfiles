@@ -1,7 +1,7 @@
 denysdovhan/spaceship-prompt
 supercrabtree/k
 zsh-users/zsh-autosuggestions
-evilhamsterman/zsh-autoswitch-venv
 b4b4r07/enhancd
 zdharma/fast-syntax-highlighting
 zsh-users/zsh-completions
+robbyrussell/oh-my-zsh path:plugins/virtualenvwrapper
