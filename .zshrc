@@ -22,3 +22,6 @@ case "$OS" in
     source $DOTFILES/osx.d/source.sh
   ;;
 esac
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /home/danmills/.local/bin/vault vault

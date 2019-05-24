@@ -6,3 +6,6 @@ if [[ -n "$DESKTOP_SESSION" ]]; then
 else
   antibody bundle < $DOTFILES/linux.d/console_zsh_plugins
 fi
+
+# Set virtualenvwrapper python
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
