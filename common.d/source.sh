@@ -2,7 +2,7 @@
 # The following lines were added by compinstall
 
 # Add $HOME/bin to $PATH
-export PATH=$PATH:$HOME/.local/bin
+export PATH=$HOME/.local/bin:$HOME/bin:$PATH
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*'
