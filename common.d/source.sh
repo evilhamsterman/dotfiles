@@ -60,3 +60,8 @@ if [[ $? == 0 ]]; then
     source $OPSESSION_FILE
   }
 fi
+
+# Add Kubernetes autocompletion
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi
