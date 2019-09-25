@@ -8,8 +8,6 @@ compinit
 # Initialize antibody
 source <(antibody init)
 
-# Setup common features
-source $DOTFILES/common.d/source.sh
 
 # Set options depending on environment
 OS=`uname`
@@ -25,3 +23,6 @@ esac
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /home/danmills/.local/bin/vault vault
+
+# Setup common features
+source $DOTFILES/common.d/source.sh
