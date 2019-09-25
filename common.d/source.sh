@@ -65,3 +65,8 @@ fi
 if [ $commands[kubectl] ]; then
   source <(kubectl completion zsh)
 fi
+
+# Add minikube autocompletion
+if [ $commands[minikube] ]; then
+  source <(minikube completion zsh)
+fi
