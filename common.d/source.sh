@@ -45,19 +45,10 @@ alias sedit="sudoedit"
 
 # Setup shortcuts for 1Password
 
-which op > /dev/null 2>&1
-if [[ $? == 0 ]]; then
-  OPSESSION_FILE=$HOME/.opsession
-  if [ -f $OPSESSION_FILE ]
-  then
-    echo "Using existing 1Password Session"
-    source $OPSESSION_FILE
-  fi
+if [ $commands[op] ]; then
   function loginop()
   {
-    op signin qumulo > $OPSESSION_FILE
-    chmod go-rwx $OPSESSION_FILE
-    source $OPSESSION_FILE
+    eval $(op signin qumulo)
   }
 fi
 
