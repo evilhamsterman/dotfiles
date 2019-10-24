@@ -61,3 +61,8 @@ fi
 if [ $commands[minikube] ]; then
   source <(minikube completion zsh)
 fi
+
+# Alias exa to ls
+if [ $commands[exa] ]; then
+  alias ls=exa
+fi
