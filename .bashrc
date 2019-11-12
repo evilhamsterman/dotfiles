@@ -114,6 +114,3 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 PATH=$PATH:$HOME/bin
-
-export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh

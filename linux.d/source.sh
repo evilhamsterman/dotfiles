@@ -7,9 +7,6 @@ else
   antibody bundle < $DOTFILES/linux.d/console_zsh_plugins
 fi
 
-# Set virtualenvwrapper python
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-
 # Add snaps to PATH
 if [ -d "/snap/bin" ]; then
     export PATH=$PATH:/snap/bin
