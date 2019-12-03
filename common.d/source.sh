@@ -66,3 +66,8 @@ fi
 if [ $commands[exa] ]; then
   alias ls=exa
 fi
+
+# Alias kitty ssh to ssh
+if [ "$TERM" = "xterm-kitty" ]; then
+    alias ssh="kitty +kitten ssh"
+fi
