@@ -1,0 +1,11 @@
+# I like my prompt on a single line
+add_newline = false
+[line_break]
+disabled = true
+
+# Only show commands duration if longer than 10 seconds
+[cmd_duration]
+min_time = 10000
+
+[jobs]
+disabled = true

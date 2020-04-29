@@ -1,0 +1,7 @@
+*
+!*/
+!.gitignore
+!starship.toml
+!fish/fishfile
+!fish/conf.d/00-env.fish
+!fish/conf.d/01-packages.fish
