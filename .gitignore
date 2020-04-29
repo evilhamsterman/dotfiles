@@ -1,5 +1,9 @@
+# Ignore everything
 *
+# Reinclude directories
 !*/
+
+# Reinclude the specific files I need
 !.gitignore
 !starship.toml
 !fish/fishfile
