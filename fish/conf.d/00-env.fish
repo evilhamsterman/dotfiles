@@ -17,9 +17,9 @@ if not test -d $local_bin
 end
 
 # Load check for fzf for enhancd
-set fzf_installed false
-if not type -q fzf
-    echo "Install fzf for full cd fun"
+set fzy_installed false
+if not type -q fzy
+    echo "Install fzy for full cd fun"
     set -gx ENHANCD_COMMAND ecd
 end
 
@@ -28,7 +28,7 @@ set -gx ENHANCD_DISABLE_DOT 1
 set -gx ENHANCD_DISABLE_HOME 1
 
 # Connect to Windows ssh-agent if running in WSL
-if test -n $WSL_DISTRO_NAME
+if not test -z $WSL_DISTRO_NAME
     set -gx SSH_AUTH_SOCK "$HOME/.ssh/agent.sock"
     if not ss -a | grep -q $SSH_AUTH_SOCK
         rm -f $SSH_AUTH_SOCK
