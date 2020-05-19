@@ -17,9 +17,9 @@ if not test -d $local_bin
 end
 
 # Load check for fzf for enhancd
-set fzy_installed false
-if not type -q fzy
-    echo "Install fzy for full cd fun"
+set fzf_installed false
+if not type -q fzf
+    echo "Install fzf for full cd fun"
     set -gx ENHANCD_COMMAND ecd
 end
 
