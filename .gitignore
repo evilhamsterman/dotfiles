@@ -4,8 +4,12 @@
 !*/
 
 # Reinclude the specific files I need
-!.gitignore
+!/.gitignore
 !starship.toml
 !fish/fishfile
 !fish/conf.d/00-env.fish
 !fish/conf.d/01-packages.fish
+!backgrounds/nord-background.png
+!/sway/*
+!/kitty/*
+!/ranger/*
