@@ -27,6 +27,11 @@ end
 set -gx ENHANCD_DISABLE_DOT 1
 set -gx ENHANCD_DISABLE_HOME 1
 
+# If we are in a Linux desktop use Gnome Keyring for SSH
+if not test -z $DESKTOP_SESSION
+    set -gx (gnome-keyring-daemon --start | string split "=")
+end
+
 # Connect to Windows ssh-agent if running in WSL
 if not test -z $WSL_DISTRO_NAME
     set -gx SSH_AUTH_SOCK "$HOME/.ssh/agent.sock"
