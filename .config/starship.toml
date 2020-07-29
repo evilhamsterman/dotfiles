@@ -7,3 +7,6 @@ min_time = 10000
 
 [jobs]
 disabled = true
+
+[kubernetes]
+disabled = false
