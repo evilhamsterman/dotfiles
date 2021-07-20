@@ -26,6 +26,12 @@ fi
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-PKGS="starship fish tmux mosh fzf bitwarden-cli
+PKGS="starship fish tmux mosh fzf bitwarden-cli"
 brew install $PKGS
+
+CASKS="google-chrome google-drive bitwarden iterm2"
+for CASK in $CASKS
+do
+    brew install --cask $CASK
+done  
 {{ end }}
