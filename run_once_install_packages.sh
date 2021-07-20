@@ -24,7 +24,11 @@ fi
 {{ else if (eq .chezmoi.os "darwin") }}
 # MacOS Setup
 # Install Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+if ! command -v brew &> /dev/null
+then
+    xcode-select —-install
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
 
 PKGS="starship fish tmux mosh fzf bitwarden-cli"
 brew install $PKGS
