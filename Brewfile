@@ -9,10 +9,12 @@ brew "fish"
 brew "fzf"
 brew "mas"
 brew "mosh"
+brew "openssh"
 brew "pre-commit"
 brew "starship"
 brew "tmux"
 cask "bitwarden"
+cask "font-fira-code-nerd-font"
 cask "google-chrome"
 cask "google-drive"
 cask "iterm2"
@@ -21,3 +23,8 @@ cask "signal"
 cask "slack"
 cask "visual-studio-code"
 cask "zoom"
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
