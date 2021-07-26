@@ -34,3 +34,9 @@ fi
 brew bundle install
 
 {{ end }}
+
+if ! [ -f $HOME/.config/git-template/hooks/pre-commit ];
+then
+    pre-commit init-templatedir $HOME/.config/git-template
+fi
+
