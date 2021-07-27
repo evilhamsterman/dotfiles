@@ -14,6 +14,7 @@ brew "pre-commit"
 brew "starship"
 brew "tmux"
 cask "bitwarden"
+cask "docker"
 cask "font-fira-code-nerd-font"
 cask "google-chrome"
 cask "google-drive"
@@ -23,8 +24,3 @@ cask "signal"
 cask "slack"
 cask "visual-studio-code"
 cask "zoom"
-mas "GarageBand", id: 682658836
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
