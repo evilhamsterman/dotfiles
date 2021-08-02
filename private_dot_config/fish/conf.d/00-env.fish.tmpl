@@ -11,7 +11,7 @@ set fish_greeting
 # Add $HOME/.local/bin to PATH and make sure it exists
 # if test
 set -l local_bin $HOME/.local/bin
-set -gx PATH $local_bin $PATH
+fish_add_path $local_bin
 if not test -d $local_bin
     mkdir -p $local_bin
 end
@@ -27,6 +27,8 @@ end
 set -gx ENHANCD_DISABLE_DOT 1
 set -gx ENHANCD_DISABLE_HOME 1
 
+{{/* Linux stuff */}}
+{{if eq .chezmoi.os "linux"}}
 # If we are in a Linux desktop use Gnome Keyring for SSH
 if not test -z $DESKTOP_SESSION
     set -gx (gnome-keyring-daemon --start | string split "=")
@@ -40,3 +42,10 @@ if not test -z $WSL_DISTRO_NAME
         setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/dan/.local/bin/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &
     end
 end
+{{ end }}
+
+{{/* MacOS Stuff */}}
+{{ if eq .chezmoi.os "darwin" }}
+# Source gcloud tools
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
+{{ end }}
