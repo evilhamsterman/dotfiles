@@ -9,4 +9,7 @@ min_time = 10000
 disabled = true
 
 [kubernetes]
-disabled = false
+disabled = true
+
+[gcloud]
+disabled = true

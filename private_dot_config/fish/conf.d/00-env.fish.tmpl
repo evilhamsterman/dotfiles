@@ -27,6 +27,15 @@ end
 set -gx ENHANCD_DISABLE_DOT 1
 set -gx ENHANCD_DISABLE_HOME 1
 
+# Setup Go paths
+if type -q go
+    set -gx GOPATH (go env GOPATH)
+    fish_add_path $GOPATH/bin
+end
+# Set editor based on local or remote
+if type -q code
+    set -gx EDITOR code --wait
+end
 {{/* Linux stuff */}}
 {{if eq .chezmoi.os "linux"}}
 # If we are in a Linux desktop use Gnome Keyring for SSH
@@ -48,4 +57,5 @@ end
 {{ if eq .chezmoi.os "darwin" }}
 # Source gcloud tools
 source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
+
 {{ end }}
