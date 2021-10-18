@@ -59,4 +59,18 @@ mas "Microsoft Remote Desktop", id: 1295203466
 mas "Yubico Authenticator", id: 1497506650
 EOF
 
+FISH_PATH=/usr/local/bin/fish
+
+if ! grep -q $FISH_PATH /etc/shells
+then
+    echo $FISH_PATH | sudo tee -a /etc/shells > /dev/null
+fi
+
+USER_SHELL=`dscl . -read $HOME | grep UserShell | awk '{print $NF}'`
+
+if [[ $USER_SHELL != $FISH_PATH ]];
+then
+    chsh -s $FISH_PATH
+fi
+
 {{ end }}
