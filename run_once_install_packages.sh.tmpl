@@ -13,7 +13,7 @@ then
 fi
 
 # Install other packages
-PKGS="starship fish tmux mosh fzf bitwarden-cli-bin"
+PKGS="starship fish tmux mosh fzf bitwarden-cli-bin python-pre-commit"
 yay -S $PKGS --noconfirm --needed
 
 # Make sure shell is set to fish
@@ -31,17 +31,32 @@ then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-brew bundle install
+brew bundle --no-lock --file=/dev/stdin << EOF
+tap "buo/cask-upgrade"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+brew "bitwarden-cli"
+brew "exa"
+brew "fish"
+brew "fzf"
+brew "ipcalc"
+brew "mas"
+brew "mosh"
+brew "mtr"
+brew "pre-commit"
+brew "starship"
+brew "step"
+brew "tmux"
+cask "font-fira-code-nerd-font"
+cask "google-chrome"
+cask "iterm2"
+cask "powershell"
+cask "signal"
+cask "visual-studio-code"
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Yubico Authenticator", id: 1497506650
+EOF
 
 {{ end }}
-
-# Load fish packages
-if status is-interactive && ! functions --query fisher
-    curl --silent --location https://git.io/fisher | source && fisher install jorgebucaran/fisher
-end
-
-if ! [ -f $HOME/.config/git-template/hooks/pre-commit ];
-then
-    pre-commit init-templatedir $HOME/.config/git-template
-fi
-

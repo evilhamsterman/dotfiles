@@ -5,6 +5,11 @@
 # Set XDG values if they aren't set
 set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
 
+# Load fish packages
+if status is-interactive && not functions --query fisher
+    curl --silent --location https://git.io/fisher | source && fisher install jorgebucaran/fisher
+end
+
 # Load Starship Prompt if available
 set starship_installed false
 if type -q starship
@@ -45,9 +50,11 @@ else
     set -gx EDITOR vim
 end
 
-# Load fish packages
-if status is-interactive && ! functions --query fisher
-    curl --silent --location https://git.io/fisher | source && fisher install jorgebucaran/fisher
+if type -q pre-commit
+    if not test -e $HOME/.config/git-template/hooks/pre-commit
+        mkdir -p $HOME/.config/git-template/hooks/pre-commit
+        pre-commit init-templatedir $HOME/.config/git-template
+    end
 end
 
 {{/* Linux stuff */}}
@@ -69,6 +76,9 @@ end
 
 {{/* MacOS Stuff */}}
 {{ if eq .chezmoi.os "darwin" }}
+# Add homebrew sbin
+fish_add_path /usr/local/sbin
+
 # Source gcloud tools
 source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
 
