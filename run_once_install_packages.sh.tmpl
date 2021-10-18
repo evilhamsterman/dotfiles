@@ -35,6 +35,11 @@ brew bundle install
 
 {{ end }}
 
+# Load fish packages
+if status is-interactive && ! functions --query fisher
+    curl --silent --location https://git.io/fisher | source && fisher install jorgebucaran/fisher
+end
+
 if ! [ -f $HOME/.config/git-template/hooks/pre-commit ];
 then
     pre-commit init-templatedir $HOME/.config/git-template

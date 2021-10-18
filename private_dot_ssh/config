@@ -27,3 +27,12 @@ Host dmills-remote
   HostName dmills-remote.corp.qumulo.com
   ForwardAgent yes
   User dmills
+
+# vCenter
+Host it-vc*
+  PreferredAuthentications password
+  PubkeyAuthentication no
+
+Host vc-poc.corp.qumulo.com
+  PreferredAuthentications password
+  PubkeyAuthentication no

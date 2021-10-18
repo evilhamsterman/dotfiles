@@ -5,6 +5,12 @@
 # Set XDG values if they aren't set
 set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
 
+# Load Starship Prompt if available
+set starship_installed false
+if type -q starship
+    starship init fish | source
+end
+
 # Disable fish greeting
 set fish_greeting
 
@@ -35,7 +41,15 @@ end
 # Set editor based on local or remote
 if type -q code
     set -gx EDITOR code --wait
+else
+    set -gx EDITOR vim
 end
+
+# Load fish packages
+if status is-interactive && ! functions --query fisher
+    curl --silent --location https://git.io/fisher | source && fisher install jorgebucaran/fisher
+end
+
 {{/* Linux stuff */}}
 {{if eq .chezmoi.os "linux"}}
 # If we are in a Linux desktop use Gnome Keyring for SSH
@@ -57,5 +71,16 @@ end
 {{ if eq .chezmoi.os "darwin" }}
 # Source gcloud tools
 source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
+
+# Check if minikube and docker are installed and set docker to use minikube as docker daemon
+if type -q minikube && type -q docker
+    minikube status > /dev/null
+    if test $status -eq 0
+        minikube -p minikube docker-env | source
+    end
+end
+
+# Add local Python site to PATH
+fish_add_path (python3 -m site --user-base)/bin
 
 {{ end }}
