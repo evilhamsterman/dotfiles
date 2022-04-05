@@ -57,6 +57,16 @@ if type -q pre-commit
     end
 end
 
+# Kubernetes shortcuts
+if type -q kubectl
+    alias k=kubectl
+end
+
+if type -q kubie
+    alias kns="kubie ns"
+    alias kctx="kubie ctx"
+end
+
 {{/* Linux stuff */}}
 {{if eq .chezmoi.os "linux"}}
 # If we are in a Linux desktop use Gnome Keyring for SSH
