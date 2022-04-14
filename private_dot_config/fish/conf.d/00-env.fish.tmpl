@@ -60,11 +60,18 @@ end
 # Kubernetes shortcuts
 if type -q kubectl
     alias k=kubectl
+    alias kshell="kubectl run shell --rm -it --image alpine -- /bin/sh"
 end
 
 if type -q kubie
     alias kns="kubie ns"
     alias kctx="kubie ctx"
+end
+
+# Setup Virtualfish project directory
+set -gx PROJECT_HOME $HOME/development
+if not test -d $PROJECT_HOME
+    mkdir -p $PROJECT_HOME
 end
 
 {{/* Linux stuff */}}
