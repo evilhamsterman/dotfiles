@@ -76,11 +76,6 @@ end
 
 {{/* Linux stuff */}}
 {{if eq .chezmoi.os "linux"}}
-# If we are in a Linux desktop use Gnome Keyring for SSH
-if not test -z $DESKTOP_SESSION
-    set -gx (gnome-keyring-daemon --start | string split "=")
-end
-
 # Connect to Windows ssh-agent if running in WSL
 if not test -z $WSL_DISTRO_NAME
     set -gx SSH_AUTH_SOCK "$HOME/.ssh/agent.sock"
@@ -88,6 +83,9 @@ if not test -z $WSL_DISTRO_NAME
         rm -f $SSH_AUTH_SOCK
         setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/dan/.local/bin/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &
     end
+else if test -z (pgrep ssh-agent)
+    # If we are in a Linux desktop use the ssh-agent for SSH
+    set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
 end
 {{ end }}
 
