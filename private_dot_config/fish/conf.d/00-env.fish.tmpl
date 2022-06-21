@@ -68,6 +68,10 @@ if type -q kubie
     alias kctx="kubie ctx"
 end
 
+if type -q kubeseal
+    alias ks="kubeseal --controller-name=sealed-secrets-controller --controller-namespace=sealed-secrets"
+end
+
 # Setup Virtualfish project directory
 set -gx PROJECT_HOME $HOME/development
 if not test -d $PROJECT_HOME
