@@ -4,24 +4,6 @@ Host *
   {{ end }}
   AddKeysToAgent yes
 
-# Old Switches
-Host cs-5-dist-1.corp.qumulo.com
-  User admin
-  KexAlgorithms +diffie-hellman-group1-sha1
-  Ciphers aes128-cbc
-Host cs-14-dist-1.corp.qumulo.com
-  User admin
-  KexAlgorithms +diffie-hellman-group1-sha1
-  Ciphers aes128-cbc
-Host cs-16-dist-1.corp.qumulo.com
-  User admin
-  KexAlgorithms +diffie-hellman-group1-sha1
-  Ciphers aes128-cbc
-Host cfw-15e-05-ipmi.corp.qumulo.com
-  User admin
-  KexAlgorithms +diffie-hellman-group1-sha1
-  Ciphers aes128-cbc
-
 # Remote VM
 Host dmills-remote
   HostName dmills-remote.corp.qumulo.com
@@ -48,3 +30,8 @@ Host *.qumulo.com
 # Home Devices
 Host *.mills.haus
   User dan
+
+# To use ScaleFT proxycommand, add this configuration block to your $HOME/.ssh/config
+Match exec "/usr/bin/sft resolve -q  %h" !user git
+  ProxyCommand "/usr/bin/sft" proxycommand  %h
+  UserKnownHostsFile /home/dmills/.local/share/ScaleFT/proxycommand_known_hosts
