@@ -32,6 +32,12 @@ Host *.mills.haus
   User dan
 
 # To use ScaleFT proxycommand, add this configuration block to your $HOME/.ssh/config
+{{ if eq .chezmoi.os "linux" }}
 Match exec "/usr/bin/sft resolve -q  %h" !user git
   ProxyCommand "/usr/bin/sft" proxycommand  %h
-  UserKnownHostsFile /home/dmills/.local/share/ScaleFT/proxycommand_known_hosts
+  UserKnownHostsFile {{.chezmoi.homeDir}}/.local/share/ScaleFT/proxycommand_known_hosts
+{{ else if eq .chezmoi.os "darwin" }}
+Match exec "/usr/local/bin/sft resolve -q  %h" !user git
+  ProxyCommand "/usr/local/bin/sft" proxycommand  %h
+  UserKnownHostsFile "{{.chezmoi.homeDir}}/Library/Application Support/ScaleFT/proxycommand_known_hosts"
+{{ end }}
