@@ -68,8 +68,8 @@ if type -q kubie
     alias kctx="kubie ctx"
 end
 
-if type -q kubeseal
-    alias ks="kubeseal --controller-name=sealed-secrets-controller --controller-namespace=sealed-secrets"
+if test -d $HOME/.rd
+    fish_add_path -aP $HOME/.rd
 end
 
 # Setup Virtualfish project directory
