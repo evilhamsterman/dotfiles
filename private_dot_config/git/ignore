@@ -6,3 +6,6 @@
 
 # Environment Variable files
 .env*
+
+# Ignore playground folder
+playground/*
