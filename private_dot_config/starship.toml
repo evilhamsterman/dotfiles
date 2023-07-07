@@ -1,9 +1,12 @@
-# I like my prompt on a single line
-add_newline = false
-
 # Only show commands duration if longer than 10 seconds
 [cmd_duration]
 min_time = 10000
+
+[container]
+style="green"
+
+[gcloud]
+disabled = true
 
 [jobs]
 disabled = true
@@ -11,5 +14,8 @@ disabled = true
 [kubernetes]
 disabled = false
 
-[gcloud]
-disabled = true
+[os]
+disabled = false
+
+[sudo]
+disabled = false
