@@ -1,7 +1,18 @@
-{{- $email := promptString "email" -}}
-[data]
-  email = {{ $email | quote }}
+{{/* Check if we're in a remote vscode environment */}}
+{{- $remote:= env "REMOTE_CONTAINERS" | not | not -}}
 
+
+[data]
+  remote = {{ $remote }}
+  name = "Dan Mills"
+  {{- if $remote }}
+  email = "dmills@qumulo.com"
+  {{- else }}
+  email = "{{ promptString "email" | quote }}"
+  {{- end }}
+
+{{- if not $remote }}
 [git]
   autoCommit = true
   autoPush = true
+{{- end }}

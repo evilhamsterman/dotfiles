@@ -1,7 +1,7 @@
 #!/bin/sh
 
 {{ if (eq .chezmoi.os "linux") }}
-{{ if (eq .chezmoi.osRelease.id "arch") }}
+    {{ if (eq .chezmoi.osRelease.id "arch") }}
 # Arch Linux setup
 # Check for and install yay
 if ! command -v yay &> /dev/null
@@ -22,7 +22,19 @@ then
     chsh -s /usr/bin/fish
     echo "Shell changed relogin"
 fi
-{{ end }}
+    {{ else if $remote }}
+# Debian container setup
+# Install apt packages
+sudo apt-get update && sudo apt-get install -y tmux exa fzf tmux
+
+# Install fisher
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+
+# Install starship
+curl -sS https://starship.rs/install.sh | sh -s -- -y
+
+    {{ end }}
+
 {{ else if (eq .chezmoi.os "darwin") }}
 # MacOS Setup
 # Install Homebrew
@@ -77,5 +89,7 @@ fi
 
 {{ end }}
 
+{{- if not $remote }}
 # Install virtualfish
 fish -c vf install projects auto_activation global_requirements
+{{- end }}
