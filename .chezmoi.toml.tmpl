@@ -8,7 +8,7 @@
   {{- if $remote }}
   email = "dmills@qumulo.com"
   {{- else }}
-  email = "{{ promptString "email" | quote }}"
+  email = {{ promptString "email" | quote }}
   {{- end }}
 
 {{- if not $remote }}
