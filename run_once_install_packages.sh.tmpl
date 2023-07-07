@@ -13,7 +13,7 @@ then
 fi
 
 # Install other packages
-PKGS="starship fish tmux mosh fzf bitwarden-cli python-pre-commit exa fisher virtualfish"
+PKGS="starship fish tmux mosh fzf bitwarden-cli python-pre-commit exa fisher virtualfish zoxide"
 yay -S $PKGS --noconfirm --needed
 
 # Make sure shell is set to fish
@@ -32,6 +32,9 @@ curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fi
 
 # Install starship
 curl -sS https://starship.rs/install.sh | sh -s -- -y
+
+# Install zoxide
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 
     {{ end }}
 
@@ -63,6 +66,7 @@ brew "pre-commit"
 brew "starship"
 brew "step"
 brew "tmux"
+brew "zoxide"
 cask "font-fira-code-nerd-font"
 cask "google-chrome"
 cask "iterm2"
