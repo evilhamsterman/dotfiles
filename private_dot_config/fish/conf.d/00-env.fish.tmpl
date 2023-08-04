@@ -37,6 +37,7 @@ if type -q go
     set -gx GOPATH (go env GOPATH)
     fish_add_path $GOPATH/bin
 end
+
 # Set editor based on local or remote
 if type -q code
     set -gx EDITOR code --wait
@@ -62,6 +63,7 @@ if type -q kubie
     alias kctx="kubie ctx"
 end
 
+# Add rancher desktop binaries
 if test -d $HOME/.rd
     fish_add_path -aP $HOME/.rd/bin
 end
@@ -70,6 +72,11 @@ end
 set -gx PROJECT_HOME $HOME/development
 if not test -d $PROJECT_HOME
     mkdir -p $PROJECT_HOME
+end
+
+# Use direnv for loading .env files
+if type -q direnv
+    direnv hook fish | source
 end
 
 {{/* Linux stuff */}}
