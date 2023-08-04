@@ -74,17 +74,14 @@ end
 
 {{/* Linux stuff */}}
 {{if eq .chezmoi.os "linux"}}
+    {{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 # Connect to Windows ssh-agent if running in WSL
-if not test -z $WSL_DISTRO_NAME
-    set -gx SSH_AUTH_SOCK "$HOME/.ssh/agent.sock"
-    if not ss -a | grep -q $SSH_AUTH_SOCK
-        rm -f $SSH_AUTH_SOCK
-        setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/dan/.local/bin/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &
-    end
-else
-    # If we are in a Linux desktop use the ssh-agent for SSH
-    set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
+setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/dan/.local/bin/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &
+    {{ else if not .remote }}
+# If we are in a Linux desktop use the ssh-agent for SSH
+set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
 end
+    {{ end }}
 {{ end }}
 
 {{/* MacOS Stuff */}}
