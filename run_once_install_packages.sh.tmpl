@@ -14,7 +14,7 @@ then
 fi
 
 # Install other packages
-PKGS="direnv starship fish tmux mosh fzf bitwarden-cli python-pre-commit exa fisher virtualfish zoxide socat"
+PKGS="direnv starship fish tmux mosh fzf bitwarden-cli python-pre-commit exa fisher zoxide socat"
 yay -S $PKGS --noconfirm --needed
 
 # Make sure shell is set to fish
@@ -95,7 +95,3 @@ fi
 
 {{ end }}
 
-{{ if not .remote }}
-# Install virtualfish
-fish -c vf install projects auto_activation global_requirements
-{{ end }}
