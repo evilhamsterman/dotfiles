@@ -45,13 +45,6 @@ else
     set -gx EDITOR vim
 end
 
-if type -q pre-commit
-    if not test -e $HOME/.config/git-template/hooks/pre-commit
-        mkdir -p $HOME/.config/git-template/
-        pre-commit init-templatedir $HOME/.config/git-template
-    end
-end
-
 # Kubernetes shortcuts
 if type -q kubectl
     alias k=kubectl
