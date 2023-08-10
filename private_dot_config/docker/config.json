@@ -1,8 +1,0 @@
-// ~/docker/config.json
-{
-  "credsStore": "desktop",
-  "credHelpers": {
-    "docker.pkg.github.com": "gh",
-    "ghcr.io": "gh"
-  }
-}
