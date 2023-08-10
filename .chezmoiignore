@@ -1,4 +1,5 @@
-{{ if ne .chezmoi.os "darwin" }}
+{{ if eq .chezmoi.os "darwin" }}
 Brewfile
 {{ end }}
 install.sh
+.docker/config.json
