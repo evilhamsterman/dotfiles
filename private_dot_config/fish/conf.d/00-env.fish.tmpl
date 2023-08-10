@@ -80,7 +80,6 @@ setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/dan/.local/bin/n
     {{ else if not .remote }}
 # If we are in a Linux desktop use the ssh-agent for SSH
 set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
-end
     {{ end }}
 {{ end }}
 
