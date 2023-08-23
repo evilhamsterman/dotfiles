@@ -1,7 +1,7 @@
 #!/bin/sh
 
 {{ if (eq .chezmoi.os "linux") }}
-    {{ if (eq .chezmoi.osRelease.id "arch") }}
+    {{ if (eq .chezmoi.osRelease.id "arch" "archarm" ) }}
 # Arch Linux setup
 # Check for and install yay
 if ! command -v yay &> /dev/null
@@ -14,7 +14,7 @@ then
 fi
 
 # Install other packages
-PKGS="direnv starship fish tmux mosh fzf bitwarden-cli python-pre-commit exa fisher zoxide socat"
+PKGS="direnv starship fish tmux mosh fzf bitwarden-cli python-pre-commit exa fisher zoxide socat github-cli"
 yay -S $PKGS --noconfirm --needed
 
 # Make sure shell is set to fish
