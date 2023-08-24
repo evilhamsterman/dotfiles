@@ -23,6 +23,10 @@ disabled = false
 disabled = false
 symbol = "󰢏 "
 
+[shell]
+disabled = false
+fish_indicator = "󰈺"
+
 # nerdfont preset
 
 [aws]
