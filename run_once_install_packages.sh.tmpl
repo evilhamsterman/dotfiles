@@ -23,7 +23,7 @@ then
     chsh -s /usr/bin/fish
     echo "Shell changed relogin"
 fi
-    {{ else if .remote }}
+    {{ else if (eq .chezmoi.osRelease.idLike "debian") }}
 # Debian container setup
 # Install apt packages
 sudo apt-get update && sudo apt-get install -y tmux exa fzf direnv
