@@ -9,6 +9,7 @@ disabled = true
 
 [kubernetes]
 disabled = false
+symbol = "󱃾 "
 
 [gcloud]
 disabled = true
