@@ -76,8 +76,12 @@ end
 {{if eq .chezmoi.os "linux"}}
     {{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 # Connect to Windows ssh-agent if running in WSL
+if not test -d $HOME/.ssh
+    mkdir -p -m 700 $HOME/.ssh
+end
+set -gx SSH_AUTH_SOCK $HOME/.ssh/agent.sock
 if type -q socat
-    setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"/mnt/c/Users/dan/.local/bin/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &
+    setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &
 end
     {{ else if not .remote }}
 # If we are in a Linux desktop use the ssh-agent for SSH
