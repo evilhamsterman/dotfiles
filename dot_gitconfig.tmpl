@@ -25,3 +25,8 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+{{ if eq .chezmoi.od "windows" }}
+[core]
+    autocrlf = true
+{{ end }}
