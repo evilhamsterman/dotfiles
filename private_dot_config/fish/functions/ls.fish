@@ -1,3 +1,3 @@
 function ls
-    command exa --git $argv
+    command eza --git $argv
 end

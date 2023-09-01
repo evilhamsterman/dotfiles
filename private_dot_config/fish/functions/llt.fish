@@ -1,3 +1,3 @@
 function llt
-    command exa -lT $argv
+    command eza -lT $argv
 end

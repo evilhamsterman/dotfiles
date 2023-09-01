@@ -1,3 +1,3 @@
 function lt
-    command exa -T $argv
+    command eza -T $argv
 end
