@@ -26,7 +26,7 @@
 	process = git-lfs filter-process
 	required = true
 
-{{ if eq .chezmoi.od "windows" }}
+{{ if eq .chezmoi.os "windows" }}
 [core]
     autocrlf = true
 {{ end }}
