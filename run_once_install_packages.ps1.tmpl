@@ -2,8 +2,8 @@
 
 {{ if eq .chezmoi.os "linux" "darwin" -}}
 # unix-setup.sh {{ include ".chezmoitemplates/unix-setup.sh" | sha256sum }}
-{{- template "unix-setup.sh" . -}}
+{{ template "unix-setup.sh" . -}}
 {{ else if eq .chezmoi.os "windows" -}}
-# windows-setup.sh {{ include ".chezmoitemplates/windows-setup.sh" | sha256sum }}
-{{- template "windows-setup.ps1" -}}
-{{- end -}}
+# windows-setup.sh {{ include ".chezmoitemplates/windows-setup.ps1" | sha256sum }}
+{{ template "windows-setup.ps1" -}}
+{{- end }}
