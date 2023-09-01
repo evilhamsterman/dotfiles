@@ -20,8 +20,9 @@ yay -S $PKGS --noconfirm --needed
 # Add eza repo
 curl -sS https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo tee /etc/apt/trusted.gpg.d/gierens.asc >/dev/null
 echo "deb http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list >/dev/null
+
 # Install apt packages
-sudo apt-get update && sudo apt-get install -y tmux fzf fish unzip eza
+sudo apt-get update && sudo apt-get install -y tmux fzf fish unzip eza socat
 sudo snap install yq jq
 
 # All of these either have issues with the version in apt/snap or don't exist at all
