@@ -12,22 +12,28 @@ then
 fi
 
 # Install other packages
-PKGS="direnv starship fish tmux mosh fzf bitwarden-cli python-pre-commit exa fisher zoxide socat github-cli"
+PKGS="direnv starship fish tmux mosh fzf bitwarden-cli python-pre-commit eza fisher zoxide socat github-cli jq yq"
 yay -S $PKGS --noconfirm --needed
 
     {{ else if (eq .chezmoi.osRelease.id "debian" "ubuntu") }}
-# Debian container setup
+# Debian
+# Add eza repo
+curl -sS https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo tee /etc/apt/trusted.gpg.d/gierens.asc >/dev/null
+echo "deb http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list >/dev/null
 # Install apt packages
-sudo apt-get update && sudo apt-get install -y tmux exa fzf direnv fish
+sudo apt-get update && sudo apt-get install -y tmux fzf fish unzip eza
+sudo snap install yq jq
 
-# Install fisher
-fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
+# All of these either have issues with the version in apt/snap or don't exist at all
 
 # Install starship
 curl -sS https://starship.rs/install.sh | sh -s -- -y >/dev/null
 
 # Install zoxide
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+
+# Install direnv
+curl -sfL https://direnv.net/install.sh | bash
 
     {{ end }}
 
@@ -54,7 +60,6 @@ tap "homebrew/cask-fonts"
 tap "homebrew/core"
 brew "bitwarden-cli"
 brew "direnv"
-brew "exa"
 brew "fish"
 brew "fisher"
 brew "fzf"
