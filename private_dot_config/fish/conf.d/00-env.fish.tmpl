@@ -5,10 +5,15 @@
 # Set XDG values if they aren't set
 set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
 
-# Load fish packages
-if status is-interactive && not functions --query prepend_sudo
-    fisher update
+# Update dotfiles if it's been more than a day
+if test -n "$__last_chezmoi_update"
+    if math (date %Y%j) - $__last_chezmoi_update > 1
+        cu
+    end
+else
+    cu
 end
+
 
 # Load Starship Prompt if available
 set starship_installed false
