@@ -76,11 +76,14 @@ end
 {{if eq .chezmoi.os "linux"}}
     {{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 # Connect to Windows ssh-agent if running in WSL
+set -gx SSH_AUTH_SOCK $HOME/.ssh/agent.sock
+
 if not test -d $HOME/.ssh
     mkdir -p -m 700 $HOME/.ssh
 end
-set -gx SSH_AUTH_SOCK $HOME/.ssh/agent.sock
-if type -q socat and not test -S $SSH_AUTH_SOCK
+set -gx SSH_AGENT_PID (fuser $SSH_AUTH_SOCK 2>/dev/null)
+
+if type -q socat; and not test -S $SSH_AUTH_SOCK;
     setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &
 end
     {{ else if not .remote }}
