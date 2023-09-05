@@ -79,6 +79,10 @@ end
 
 {{/* Linux stuff */}}
 {{if eq .chezmoi.os "linux"}}
+# Add snap to path if it exists
+if test -d /snap/bin
+    fish_add_path /snap/bin
+end
     {{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 # Connect to Windows ssh-agent if running in WSL
 set -gx SSH_AUTH_SOCK $HOME/.ssh/agent.sock
