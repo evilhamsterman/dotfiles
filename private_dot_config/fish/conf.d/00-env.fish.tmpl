@@ -7,7 +7,7 @@ set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
 
 # Update dotfiles if it's been more than a day
 if test -n "$__last_chezmoi_update"
-    if math (date %Y%j) - $__last_chezmoi_update > 1
+    if test (math (date +%Y%j) - $__last_chezmoi_update) -gt 1
         cu
     end
 else
