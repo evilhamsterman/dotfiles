@@ -30,3 +30,16 @@
 [core]
     autocrlf = true
 {{ end }}
+
+[core]
+    editor = code --wait
+[diff]
+    guitool = vscode
+    guiDefault = auto
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+    guitool = vscode
+    guiDefault = auto
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
