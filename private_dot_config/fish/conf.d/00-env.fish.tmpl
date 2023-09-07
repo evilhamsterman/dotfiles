@@ -83,7 +83,7 @@ end
 if test -d /snap/bin
     fish_add_path /snap/bin
 end
-    {{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+    {{ if and (.chezmoi.kernel.osrelease | lower | contains "microsoft") (not .remote) }}
 # Connect to Windows ssh-agent if running in WSL
 set -gx SSH_AUTH_SOCK $HOME/.ssh/agent.sock
 
