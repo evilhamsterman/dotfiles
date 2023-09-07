@@ -62,9 +62,6 @@
           "PackageIdentifier": "tailscale.tailscale"
         },
         {
-          "PackageIdentifier": "twpayne.chezmoi"
-        },
-        {
           "PackageIdentifier": "Yubico.Authenticator"
         }
       ],
