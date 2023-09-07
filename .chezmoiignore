@@ -10,3 +10,6 @@ Brewfile
 install.sh
 .docker/config.json
 win-packages.json
+{{ if eq .chezmoi.os "linux" "darwin" }}
+AppData/
+{{ end }}

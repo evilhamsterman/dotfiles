@@ -23,9 +23,11 @@ echo "deb http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/
 
 # Install apt packages
 sudo apt-get update && sudo apt-get install -y tmux fzf fish unzip eza socat
-for package in "yq" "jq"; do
-    sudo snap install $package 2>/dev/null
-done
+if command -v snap &> /dev/null
+    for package in "yq" "jq"; do
+        sudo snap install $package 2>/dev/null
+    done
+fi
 
 # All of these either have issues with the version in apt/snap or don't exist at all
 
