@@ -8,13 +8,43 @@
           "PackageIdentifier": "7zip.7zip"
         },
         {
+          "PackageIdentifier": "ajeetdsouza.zoxide"
+        },
+        {
           "PackageIdentifier": "Canonical.Ubuntu.2204"
         },
         {
           "PackageIdentifier": "FluxCD.Flux"
         },
         {
-          "PackageIdentifier": "twpayne.chezmoi"
+          "PackageIdentifier": "Git.Git"
+        },
+        {
+          "PackageIdentifier": "GitHub.cli"
+        },
+        {
+          "PackageIdentifier": "Google.Chrome"
+        },
+        {
+          "PackageIdentifier": "HTTPie.HTTPie"
+        },
+        {
+          "PackageIdentifier": "jstarks.npiperelay"
+        },
+        {
+          "PackageIdentifier": "junegunn.fzf"
+        },
+        {
+          "PackageIdentifier": "Microsoft.PowerShell"
+        },
+        {
+          "PackageIdentifier": "Microsoft.PowerToys"
+        },
+        {
+          "PackageIdentifier": "Microsoft.VisualStudioCode"
+        },
+        {
+          "PackageIdentifier": "OpenVPNTechnologies.OpenVPNConnect"
         },
         {
           "PackageIdentifier": "SlackTechnologies.Slack"
@@ -23,46 +53,19 @@
           "PackageIdentifier": "Starship.Starship"
         },
         {
-          "PackageIdentifier": "Microsoft.VisualStudioCode"
-        },
-        {
-          "PackageIdentifier": "Google.Chrome"
-        },
-        {
-          "PackageIdentifier": "OpenVPNTechnologies.OpenVPNConnect"
+          "PackageIdentifier": "Steelseries.GG"
         },
         {
           "PackageIdentifier": "suse.RancherDesktop"
         },
         {
-          "PackageIdentifier": "Yubico.Authenticator"
-        },
-        {
-          "PackageIdentifier": "GitHub.cli"
-        },
-        {
-          "PackageIdentifier": "Microsoft.PowerToys"
-        },
-        {
-          "PackageIdentifier": "Git.Git"
-        },
-        {
-          "PackageIdentifier": "jstarks.npiperelay"
-        },
-        {
-          "PackageIdentifier": "Steelseries.GG"
-        },
-        {
-          "PackageIdentifier": "Microsoft.PowerShell"
-        },
-        {
           "PackageIdentifier": "tailscale.tailscale"
         },
         {
-          "PackageIdentifier": "ajeetdsouza.zoxide"
+          "PackageIdentifier": "twpayne.chezmoi"
         },
         {
-          "PackageIdentifier": "junegunn.fzf"
+          "PackageIdentifier": "Yubico.Authenticator"
         }
       ],
       "SourceDetails": {
