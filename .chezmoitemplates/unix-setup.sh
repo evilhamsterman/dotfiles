@@ -24,6 +24,7 @@ echo "deb http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/
 # Install apt packages
 sudo apt-get update && sudo apt-get install -y tmux fzf fish unzip eza socat
 if command -v snap &> /dev/null
+then
     for package in "yq" "jq"; do
         sudo snap install $package 2>/dev/null
     done
