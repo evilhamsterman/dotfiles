@@ -1,6 +1,6 @@
 {{- $remote:= env "REMOTE_CONTAINERS" | not | not -}}
 
-{{ if .remote }}
+{{ if $remote }}
 sourceDir = "~/dotfiles"
 {{ end }}
 
