@@ -3,16 +3,7 @@ Host *
   UseKeychain yes
   {{ end }}
   AddKeysToAgent yes
-
-# Remote VM
-Host dmills-remote
-  HostName dmills-remote.corp.qumulo.com
   ForwardAgent yes
-  User dmills
-Host dmills-remote-cfw
-  HostName dmills-remote-cfw.corp.qumulo.com
-  ForwardAgent yes
-  User dmills
 
 # vCenter
 Host it-vc*
@@ -40,4 +31,8 @@ Match exec "/usr/bin/sft resolve -q  %h" !user git
 Match exec "/usr/local/bin/sft resolve -q  %h" !user git
   ProxyCommand "/usr/local/bin/sft" proxycommand  %h
   UserKnownHostsFile "{{.chezmoi.homeDir}}/Library/Application Support/ScaleFT/proxycommand_known_hosts"
+{{ else if eq .chezmoi.os "windows" }}
+Match exec "C:\Users\dmills\AppData\Local\Apps\ScaleFT\bin\sft.exe resolve -q  %h" !user git
+    ProxyCommand "C:\Users\dmills\AppData\Local\Apps\ScaleFT\bin\sft.exe" proxycommand  %h
+    UserKnownHostsFile C:\Users\dmills\AppData\Local\ScaleFT\proxycommand_known_hosts
 {{ end }}
