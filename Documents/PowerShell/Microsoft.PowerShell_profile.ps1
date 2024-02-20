@@ -11,10 +11,10 @@ function Test-CommandExists {
 }
 
 function Connect-itvc {
-    if ($Env:Credentials -eq $null) {
-        $Env:Credentials = Get-Credential -User dmills
+    if ($Global:Credentials -eq $null) {
+        $Global:Credentials = Get-Credential -User dmills
     }
-    Connect-VIServer it-vc.corp.qumulo.com -Credential $Env:Credentials
+    Connect-VIServer it-vc.corp.qumulo.com -Credential $Global:Credentials
 }
 
 if (Test-CommandExists "kubectl") {
