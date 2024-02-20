@@ -2,8 +2,29 @@ Invoke-Expression (&starship init powershell)
 $Env:SHELL = "pwsh.exe"
 $Env:EDITOR = "code --wait"
 
+function Test-CommandExists {
+    param (
+        [string]$command
+    )
+    $commandExists = Get-Command -Name $command -ErrorAction SilentlyContinue
+    return [bool]($commandExists)
+}
+
 function Connect-itvc {
-    Connect-Keeper
-    $l = Get-KeeperRecord  -Uid zHgtYS9mnRlCOFVj10fvuA
-    Connect-VIServer it-vc.corp.qumulo.com -User dmills -Password $(($l.fields | Where-Object { $_.fieldName -eq "password" }).values)
+    if ($Env:Credentials -eq $null) {
+        $Env:Credentials = Get-Credential -User dmills
+    }
+    Connect-VIServer it-vc.corp.qumulo.com -Credential $Env:Credentials
+}
+
+if (Test-CommandExists "kubectl") {
+    Set-Alias k kubectl
+}
+
+if (Test-CommandExists "talosctl") {
+    Set-Alias t talosctl
+}
+
+if (Test-CommandExists "flux") {
+    Set-Alias f flux
 }
