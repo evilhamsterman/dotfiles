@@ -61,6 +61,14 @@ if type -q kubie
     alias kctx="kubie ctx"
 end
 
+if type -q talosctl
+    alias t=talosctl
+end
+
+if type -q flux
+    alias f=flux
+end
+
 # Add rancher desktop binaries
 if test -d $HOME/.rd
     fish_add_path -aP $HOME/.rd/bin
