@@ -117,7 +117,7 @@ if type -q socat; and not test -S $SSH_AUTH_SOCK;
 end
 
 # alias local Windows tailscale agent if it exists
-type -q tailscale.exe
+if type -q tailscale.exe
     alias tailscale tailscale.exe
 end
     {{ else if not .remote }}
