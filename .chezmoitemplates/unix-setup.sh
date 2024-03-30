@@ -100,11 +100,4 @@ fi
 
 USER_SHELL=`dscl . -read $HOME | grep UserShell | awk '{print $NF}'`
 
-{{- if not .codespaces }}
-if [[ $USER_SHELL != $FISH_PATH ]];
-then
-    chsh -s $FISH_PATH
-fi
-{{- end }}
-
 {{ end }}
