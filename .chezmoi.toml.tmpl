@@ -1,7 +1,8 @@
 {{- $remote:= env "REMOTE_CONTAINERS" | not | not -}}
+{{- $codespaces:= env "CODESPACES" | not | not -}}
 
-{{ if $remote }}
-sourceDir = "~/dotfiles"
+{{ if $remote or $codespaces }}
+sourceDir = {{ .chezmoi.sourceDir | quote }}
 {{ end }}
 
 [data]
@@ -9,6 +10,8 @@ sourceDir = "~/dotfiles"
   name = "Dan Mills"
   {{- if $remote }}
   email = "dmills@qumulo.com"
+  {{- else if $codespaces }}
+  email = "evilhamsterman@gmail.com"
   {{- else }}
   email = {{ promptString "email" | quote }}
   {{- end }}
