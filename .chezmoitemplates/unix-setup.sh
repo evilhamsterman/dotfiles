@@ -43,15 +43,6 @@ curl -sfL https://direnv.net/install.sh | bash
 
     {{ end }}
 
-{{ if or (not .remote) (not .codespaces) }}
-# Make sure shell is set to fish
-if ! getent passwd $USER | awk -F: '{print $NF}' | grep -q fish
-then
-    chsh -s /usr/bin/fish
-    echo "Shell changed relogin"
-fi
-{{ end }}
-
 {{ else if (eq .chezmoi.os "darwin") }}
 # MacOS Setup
 # Install Homebrew
