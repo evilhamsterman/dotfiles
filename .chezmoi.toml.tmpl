@@ -1,9 +1,7 @@
 {{- $remote:= env "REMOTE_CONTAINERS" | not | not -}}
 {{- $codespaces:= env "CODESPACES" | not | not -}}
 
-{{ if $remote or $codespaces }}
 sourceDir = {{ .chezmoi.sourceDir | quote }}
-{{ end }}
 
 [data]
   remote = {{ $remote }}
