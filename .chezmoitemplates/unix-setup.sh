@@ -43,7 +43,7 @@ curl -sfL https://direnv.net/install.sh | bash
 
     {{ end }}
 
-{{ if not .remote }}
+{{ if or (not .remote) (not .codespaces) }}
 # Make sure shell is set to fish
 if ! getent passwd $USER | awk -F: '{print $NF}' | grep -q fish
 then
