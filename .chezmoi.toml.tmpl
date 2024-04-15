@@ -1,10 +1,11 @@
 {{- $remote:= env "REMOTE_CONTAINERS" | not | not -}}
+{{- $codes:= env "CODER" | not | not -}}
 {{- $codespaces:= env "CODESPACES" | not | not -}}
 
 sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 [data]
-  remote = {{ $remote }}
+  remote = {{ $remote | $coder }}
   codespaces = {{ $codespaces }}
   name = "Dan Mills"
   {{- if $remote }}
