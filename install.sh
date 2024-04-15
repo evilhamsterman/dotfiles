@@ -6,6 +6,11 @@ set -eu
 
 env | sort
 
+# Clear config already there
+if [ -d "$HOME/.config/chezmoi" ]; then
+	rm -r $HOME/.config/chezmoi
+fi
+
 if ! chezmoi="$(command -v chezmoi)"; then
 	bin_dir="${HOME}/.local/bin"
 	chezmoi="${bin_dir}/chezmoi"
