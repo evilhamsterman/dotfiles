@@ -8,7 +8,7 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
   remote = {{ any $remote $coder }}
   codespaces = {{ $codespaces }}
   name = "Dan Mills"
-  {{- if $remote }}
+  {{- if (any $remote $coder) }}
   email = "dmills@qumulo.com"
   {{- else if $codespaces }}
   email = "evilhamsterman@gmail.com"
