@@ -5,7 +5,7 @@
 sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 [data]
-  remote = {{ $remote | $coder }}
+  remote = {{ or $remote $coder }}
   codespaces = {{ $codespaces }}
   name = "Dan Mills"
   {{- if $remote }}
