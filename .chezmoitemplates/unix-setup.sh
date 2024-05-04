@@ -49,8 +49,6 @@ then
     {{ if not .remote }}
     chsh --shell /usr/bin/fish
     echo "Shell changed relogin"
-    {{ else }}
-    sudo chsh --shell /usr/bin/fish $USER
     {{ end }}
 fi
 
