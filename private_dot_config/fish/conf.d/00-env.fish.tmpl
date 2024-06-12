@@ -68,9 +68,9 @@ if type -q kubectl
     fish_add_path $HOME/.krew/bin
 end
 
-if type -q kubie
-    alias kns="kubie ns"
-    alias kctx="kubie ctx"
+if type -q kubectx
+    alias kns="kubens"
+    alias kctx="kubectx"
 end
 
 if type -q talosctl

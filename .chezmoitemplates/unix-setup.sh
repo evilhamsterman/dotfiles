@@ -12,7 +12,7 @@ then
 fi
 
 # Install other packages
-PKGS="keeper-commander direnv starship fish tmux mosh fzf bitwarden-cli pre-commit eza zoxide socat github-cli jq yq"
+PKGS="keeper-commander direnv starship fish tmux mosh fzf bitwarden-cli pre-commit eza zoxide socat github-cli jq yq kubectx"
 yay -S $PKGS --noconfirm --needed
 
     {{ else if (eq .chezmoi.osRelease.id "debian" "ubuntu") }}
