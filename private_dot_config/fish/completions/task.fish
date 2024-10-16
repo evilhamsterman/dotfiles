@@ -1,4 +1,3 @@
-flag needs an argument: --completion
 set GO_TASK_PROGNAME task
 
 function __task_get_tasks --description "Prints all available tasks with their description"
