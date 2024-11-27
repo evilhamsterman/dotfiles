@@ -22,7 +22,7 @@ curl -sS https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo
 echo "deb http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list >/dev/null
 
 # Install apt packages
-sudo apt-get update && sudo apt-get install -y tmux fzf fish unzip eza socat
+sudo apt-get update && sudo apt-get install -y tmux fzf fish unzip eza socat task
 if command -v snap &> /dev/null
 then
     for package in "yq" "jq"; do
