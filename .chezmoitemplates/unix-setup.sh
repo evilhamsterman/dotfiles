@@ -12,7 +12,7 @@ then
 fi
 
 # Install other packages
-PKGS="keeper-commander direnv starship fish tmux mosh fzf bitwarden-cli pre-commit eza zoxide socat github-cli jq yq kubectx"
+PKGS="keeper-commander direnv starship fish tmux mosh fzf bitwarden-cli pre-commit eza zoxide socat github-cli jq yq kubectx task"
 yay -S $PKGS --noconfirm --needed
 
     {{ else if (eq .chezmoi.osRelease.id "debian" "ubuntu") }}
@@ -22,12 +22,17 @@ curl -sS https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo
 echo "deb http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list >/dev/null
 
 # Install apt packages
-sudo apt-get update && sudo apt-get install -y tmux fzf fish unzip eza socat task
+sudo apt-get update && sudo apt-get install -y tmux fzf fish unzip eza socat
 if command -v snap &> /dev/null
 then
-    for package in "yq" "jq"; do
+    for package in "yq" "jq" "task"; do
         sudo snap install $package 2>/dev/null
     done
+fi
+
+if ! command -v task &> /dev/null
+then
+    sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b ~/.local/bin
 fi
 
 # All of these either have issues with the version in apt/snap or don't exist at all
@@ -87,7 +92,6 @@ cask "iterm2"
 cask "powershell"
 cask "signal"
 cask "visual-studio-code"
-mas "Microsoft Remote Desktop", id: 1295203466
 mas "Yubico Authenticator", id: 1497506650
 EOF
 
