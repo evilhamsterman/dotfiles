@@ -33,7 +33,7 @@ fi
 # All of these either have issues with the version in apt/snap or don't exist at all
 
 # Install starship
-curl -sS https://starship.rs/install.sh | sh -s -- -y >/dev/null
+curl -sS https://starship.rs/install.sh | sh -s -- -y -b $HOME/.local/bin >/dev/null
 
 # Install zoxide
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
