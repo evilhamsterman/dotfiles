@@ -30,11 +30,6 @@ then
     done
 fi
 
-if ! command -v task &> /dev/null
-then
-    sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b ~/.local/bin
-fi
-
 # All of these either have issues with the version in apt/snap or don't exist at all
 
 # Install starship
