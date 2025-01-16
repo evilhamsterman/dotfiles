@@ -52,6 +52,20 @@ curl -sfL https://direnv.net/install.sh | bash
 #     {{ end }}
 # fi
 
+# Setup Qumulo environment
+ssh-keyscan hg.eng.qumulo.com >> ~/.ssh/known_hosts
+ssh-keyscan submit.eng.qumulo.com >> ~/.ssh/known_hosts
+
+curl -s https://gravyweb.eng.qumulo.com/build/latest/src/build/toolchain/bootstrap.sh | bash
+
+fish add_path /opt/qumulo/toolchain/bin
+
+hg clone --stream --config extensions.qumulo=! ssh://hg@hg.eng.qumulo.com/tools $HOME/tools
+hg clone --stream --config extensions.qumulo=! ssh://hg@hg.eng.qumulo.com/src   $HOME/src
+
+cd $HOME/src
+./prebuild
+
 {{ else if (eq .chezmoi.os "darwin") }}
 # MacOS Setup
 # Install Homebrew
