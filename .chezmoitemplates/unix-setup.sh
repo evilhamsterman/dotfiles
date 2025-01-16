@@ -58,8 +58,6 @@ ssh-keyscan submit.eng.qumulo.com >> ~/.ssh/known_hosts
 
 curl -s https://gravyweb.eng.qumulo.com/build/latest/src/build/toolchain/bootstrap.sh | bash
 
-fish add_path /opt/qumulo/toolchain/bin
-
 hg clone --stream --config extensions.qumulo=! ssh://hg@hg.eng.qumulo.com/tools $HOME/tools
 hg clone --stream --config extensions.qumulo=! ssh://hg@hg.eng.qumulo.com/src   $HOME/src
 

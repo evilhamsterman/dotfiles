@@ -95,6 +95,11 @@ set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
     {{ end }}
 {{ end }}
 
+# Check if a directory exists
+if test -d /opt/qumulo/toolchain/bin
+    fish add_path /opt/qumulo/toolchain/bin
+end
+
 {{/* MacOS Stuff */}}
 {{ if eq .chezmoi.os "darwin" }}
 # Add homebrew sbin
