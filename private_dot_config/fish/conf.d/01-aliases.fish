@@ -1,7 +1,7 @@
 # Kubernetes shortcuts
 if type -q kubectl
     alias k=kubectl
-    alias kshell="kubectl run shell --rm -it --image alpine -- /bin/sh"
+    alias kshell="kubectl run shell --rm -it --image digitalocean/doks-debug:latest -- /bin/sh"
     alias ka="kubectl apply --server-side"
     if not test -d $HOME/.krew
         set -x; set temp_dir (mktemp -d); cd "$temp_dir" &&
