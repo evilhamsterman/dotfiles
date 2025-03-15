@@ -29,3 +29,7 @@ end
 if type -q flux
     alias f=flux
 end
+
+if type -q nvim
+    alias vim
+end
