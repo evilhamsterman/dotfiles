@@ -31,5 +31,5 @@ if type -q flux
 end
 
 if type -q nvim
-    alias vim
+    alias vim=nvim
 end
