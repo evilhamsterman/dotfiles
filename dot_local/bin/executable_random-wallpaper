@@ -1,11 +1,16 @@
 #!/usr/bin/env python
 
+import os
 from pathlib import Path
 import random
 import subprocess
 
-wallpapers = Path.home()/"Pictures/backgrounds"
+wallpapers = Path.home() / "Pictures/backgrounds"
 wallpaper = random.choice(list(wallpapers.glob("*")))
 
-subprocess.run(["hyprctl", "hyprpaper", f"reload ,{wallpaper}"], check=True)
+wallpaper_state = Path(os.environ["XDG_STATE_HOME"]) / "wallpaper"
+if wallpaper_state.exists(follow_symlinks=False):
+    wallpaper_state.unlink()
+wallpaper_state.symlink_to(wallpaper)
 
+subprocess.run(["hyprctl", "hyprpaper", f"reload ,{wallpaper}"], check=True)
