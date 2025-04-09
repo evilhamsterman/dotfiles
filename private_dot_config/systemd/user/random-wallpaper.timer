@@ -1,0 +1,10 @@
+[Unit]
+Description=Run the random-wallpaper script
+
+[Timer]
+OnStartupSec=0
+OnUnitActiveSec=15m
+RandomizeDelaySec=5m
+
+[Install]
+WantedBy=timers.target

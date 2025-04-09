@@ -1,0 +1,11 @@
+#!/usr/bin/env python
+
+from pathlib import Path
+import random
+import subprocess
+
+wallpapers = Path.home()/"Pictures/backgrounds"
+wallpaper = random.choice(list(wallpapers.glob("*")))
+
+subprocess.run(["hyprctl", "hyprpaper", f"reload ,{wallpaper}"], check=True)
+

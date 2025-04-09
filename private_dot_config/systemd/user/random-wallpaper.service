@@ -1,0 +1,7 @@
+[Unit]
+Description=Set the desktop background
+
+[Service]
+Type=oneshot
+ExecStart=/home/dan/.local/bin/random-wallpaper
+
