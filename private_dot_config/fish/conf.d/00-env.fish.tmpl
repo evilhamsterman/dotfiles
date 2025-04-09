@@ -44,7 +44,7 @@ if type -q go
 end
 
 # Set editor based on local or remote
-if test $XDG_CURRENT_DESKTOP = Hyprland; type -q nvim
+if type -q nvim
     set -gx EDITOR nvim
 else if type -q code
     set -gx EDITOR code --wait
