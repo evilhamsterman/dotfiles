@@ -91,7 +91,9 @@ if type -q tailscale.exe
 end
     {{ else if not .remote }}
 # If we are in a Linux desktop use the ssh-agent for SSH
-set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
+if not set -q SSH_AUTH_SOCK
+    set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent.socket"
+end
     {{ end }}
 {{ end }}
 
