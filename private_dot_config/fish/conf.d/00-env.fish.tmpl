@@ -57,20 +57,9 @@ if test -d $HOME/.rd
     fish_add_path -aP $HOME/.rd/bin
 end
 
-# Setup Virtualfish project directory
-set -gx PROJECT_HOME $HOME/development
-if not test -d $PROJECT_HOME
-    mkdir -p $PROJECT_HOME
-end
-
 # Use direnv for loading .env files
 if type -q direnv
     direnv hook fish | source
-end
-
-# Install uv for Python goodness
-if not type -q uv
-    curl -LsSf https://astral.sh/uv/install.sh | sh
 end
 
 
@@ -104,11 +93,6 @@ if not set -q SSH_AUTH_SOCK
 end
     {{ end }}
 {{ end }}
-
-# Check if a directory exists
-if test -d /opt/qumulo/toolchain/bin
-    fish add_path /opt/qumulo/toolchain/bin
-end
 
 {{/* MacOS Stuff */}}
 {{ if eq .chezmoi.os "darwin" }}
