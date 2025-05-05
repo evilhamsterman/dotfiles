@@ -13,7 +13,6 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
   {{- else if $codespaces }}
   email = "evilhamsterman@gmail.com"
   {{- else }}
-  email = {{ promptString "email" | quote }}
   {{- end }}
 
 {{- if not $remote }}
