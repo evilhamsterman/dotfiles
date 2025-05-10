@@ -2,7 +2,7 @@
 Description=Run the random-wallpaper script
 
 [Timer]
-OnStartupSec=0
+OnStartupSec=2
 OnUnitActiveSec=15m
 RandomizeDelaySec=5m
 
