@@ -38,9 +38,6 @@ curl -sS https://starship.rs/install.sh | sh -s -- -y -b $HOME/.local/bin >/dev/
 # Install zoxide
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 
-# Install direnv
-curl -sfL https://direnv.net/install.sh | bash
-
     {{ end }}
 
 # Make sure shell is set to fish
