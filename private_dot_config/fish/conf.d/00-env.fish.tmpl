@@ -57,12 +57,6 @@ if test -d $HOME/.rd
     fish_add_path -aP $HOME/.rd/bin
 end
 
-# Use direnv for loading .env files
-if type -q direnv
-    direnv hook fish | source
-end
-
-
 {{/* Linux stuff */}}
 {{if eq .chezmoi.os "linux"}}
 # Add snap to path if it exists

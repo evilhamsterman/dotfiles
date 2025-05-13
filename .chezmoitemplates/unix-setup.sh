@@ -12,7 +12,7 @@ then
 fi
 
 # Install other packages
-PKGS="keeper-commander direnv starship fish tmux mosh fzf bitwarden-cli pre-commit eza zoxide socat github-cli jq yq kubectx task"
+PKGS="keeper-commander starship fish tmux mosh fzf bitwarden-cli pre-commit eza zoxide socat github-cli jq yq kubectx task"
 yay -S $PKGS --noconfirm --needed
 
     {{ else if (eq .chezmoi.osRelease.id "debian" "ubuntu") }}
@@ -64,7 +64,6 @@ tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 brew "bitwarden-cli"
-brew "direnv"
 brew "fish"
 brew "fisher"
 brew "fzf"
