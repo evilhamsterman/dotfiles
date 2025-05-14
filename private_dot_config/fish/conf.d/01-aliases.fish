@@ -34,3 +34,6 @@ end
 if type -q nvim
     alias vim=nvim
 end
+
+alias dive="docker run -ti --rm  -v /var/run/docker.sock:/var/run/docker.sock docker.io/wagoodman/dive"
+
