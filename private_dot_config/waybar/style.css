@@ -1,44 +1,82 @@
 * {
-    border: none;
-    border-radius: 3;
-    font-family: "Poppins";
-    font-size: 14px;
-  }
-  
-  window#waybar {
-    background: transparent;
-    transition-property: background-color;
-    transition-duration: 1s;
-  }
-   
-  window#waybar.hidden {
-    opacity: 0.2;
-  }
-  
-  window#waybar.empty {
-    background: none;
-  }
-  
-  #waybar.empty #window {
-    background: none;
-  }
-
-  tooltip {
-    /*background: transparent;*/
-    /*box-shadow: 2px 2px 2px black;*/
-    border-width: 2px;
-    border-color: #211f1f;
-    color: white; 
-    background-color: #36322f;
-    font-family: Poppins;
-    border-radius: 5px 5px 5px 5px;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding-left: 10px;
-    padding-right: 10px; 
+  border: none;
+  border-radius: 3;
+  font-family: "FiraCode";
+  font-size: 14px;
 }
-  
-  #window {
+
+window#waybar {
+  background: rgba(30, 35, 38, 0.25);
+  transition-property: background-color;
+  transition-duration: 1s;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+window#waybar.empty {
+  background: none;
+}
+
+#waybar.empty #window {
+  background: none;
+}
+
+
+.module {
+  background: #374145;
+  margin: 6px 3px;
+  border-radius: 8px;
+  padding: 0px 8px;
+  color: #A7C080;
+}
+
+#workspaces {
+  padding: 0px 16px;
+  transition: none;
+}
+
+button {
+  transition: background-color 0.2s ease-in;
+  color: #A7C080;
+  margin: 4px;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #374145;
+}
+
+button.active {
+  background: #4F5B58;
+}
+
+#tray {
+  margin-top: 6px;
+  margin-right: 12px;
+  border-radius: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: black;
+}
+
+tooltip {
+  /*background: transparent;*/
+  /*box-shadow: 2px 2px 2px black;*/
+  border-width: 2px;
+  border-color: #211f1f;
+  color: white;
+  background-color: #36322f;
+  font-family: Poppins;
+  border-radius: 5px 5px 5px 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/*#window {
     margin-top: 6px;
     padding-left: 20px;
     padding-right: 20px;
@@ -129,8 +167,7 @@
   #battery {
     margin-top: 6px;
     margin-left: 12px;
-    /* margin-right: 12px; */
-    border-radius: 8px;
+        border-radius: 8px;
     transition: none;
     padding: 10px 10px;
     color: #a3be8c;
@@ -204,15 +241,7 @@
     background: #2e3440;
   }
   
-  #tray {
-    margin-top: 6px;
-    margin-right: 12px;
-    border-radius: 8px;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: #d8dee9;
-    background: #2e3440;
-  }
+  
   
   #network {
     margin-top: 6px;
@@ -254,3 +283,4 @@
     color: #a3be8c;
     background: #2e3440;
 }
+*/

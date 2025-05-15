@@ -1,12 +1,14 @@
 [
   {
-    "height": 45,
+    "height": 55,
     "layer": "top",
     "modules-left": [
       "custom/powermenu",
       "hyprland/workspaces",
     ],
-    "modules-center": ["clock"],
+    "modules-center": [
+      "clock"
+    ],
     "modules-right": [
       "temperature",
       "cpu",
@@ -15,7 +17,6 @@
       "pulseaudio",
       "tray"
     ],
-
     // Modules configuration
     "hyprland/workspaces": {
       "disable-scroll": false,
@@ -32,9 +33,6 @@
         "8": "8 -  ",
         "9": "9 -  ",
         "10": "10 -  ",
-        "urgent": " ",
-        "focused": " ",
-        "default": " "
       }
     },
     "custom/powermenu": {
@@ -54,7 +52,7 @@
     },
     "clock": {
       "tooltip-format": "<big>{:%Y %B}</big><tt><small>{calendar}</small></tt>",
-      "format": "{:%I:%M} ",
+      "format": "{:%I:%M %p}",
       "format-alt": "{:%A, %B %d, %Y}  󰃭",
       "calendar": {
         "mode": "month",
@@ -63,25 +61,25 @@
           "weekdays": "<span color='#7FBBB3'>{}</span>",
           "today": "<span color='#E67E80'><b><u>{}</u></b></span>",
         },
-    },
+      },
     },
     "cpu": {
-      "format": "{usage}%  ",
-      "tooltip": false
+      "format": "{usage}% {avg_frequency}Ghz  ",
+      "justify": "center",
+      "tooltip": false,
     },
     "memory": {
-      "format": "{}%  "
+      "format": "{}% {used:0.1f}/{total:0.1f}GB  "
     },
     "temperature": {
       "critical-threshold": 80,
+      "justify": "center",
       "format": "{temperatureC}°C {icon}",
-      "format-icons": [" ", " ", " "]
-    },
-    "backlight": {
-      "format": "{icon} {percent}%",
-      "format-icons": [" ", " "],
-      "on-scroll-up": "light -A 1",
-      "on-scroll-down": "light -U 1"
+      "format-icons": [
+        " ",
+        " ",
+        " "
+      ]
     },
     "battery": {
       "states": {
@@ -93,10 +91,16 @@
       "format-charging": "󰂄 {capacity}%",
       "format-plugged": " ",
       "format-alt": "{time} {icon}",
-      "format-icons": ["󰁻", "󰁽", "󰁿", "󰁿", "󰁹"]
+      "format-icons": [
+        "󰁻",
+        "󰁽",
+        "󰁿",
+        "󰁿",
+        "󰁹"
+      ]
     },
     "network": {
-      "format-wifi": "   {essid}",
+      "format-wifi": "  {essid}",
       "format-ethernet": "{ifname}: {ipaddr}/{cidr} 󰈀 ",
       "format-linked": "{ifname} (No IP)  ",
       "format-disconnected": "睊 ",
@@ -105,11 +109,11 @@
       "on-click": "nm-applet"
     },
     "pulseaudio": {
-      "format": "{icon}  {volume}% {format_source}",
+      "format": "{icon} {volume}% {format_source}",
       "format-bluetooth": "{icon} {volume}% {format_source}",
       "format-bluetooth-muted": "   {volume}% {format_source}",
       "format-muted": "  {format_source}",
-      "format-source": "  ",
+      "format-source": "",
       "format-source-muted": " ",
       "format-icons": {
         "headphone": "󰋋",
@@ -118,7 +122,12 @@
         "phone": "",
         "portable": "",
         "car": "",
-        "default": ["󰝟", "󰕿", "󰖀", "󰕾"]
+        "default": [
+          "󰝟",
+          "󰕿",
+          "󰖀",
+          "󰕾"
+        ]
       },
       "tooltip-format": "{desc}, {volume}%",
       "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
