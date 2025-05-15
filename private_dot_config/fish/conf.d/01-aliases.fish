@@ -49,6 +49,10 @@ if type -q rg
     alias grep=rg
 end
 
+if type -q batcat
+    alias bat=batcat
+end
+
 if type -q bat
     alias cat=bat
 end
