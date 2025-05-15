@@ -43,9 +43,9 @@ if type -q go
     fish_add_path $GOPATH/bin
 end
 
-# Set editor based on local or remote
-if type -q nvim
-    set -gx EDITOR nvim
+# Set editor based on what's available
+if type -q helix
+    set -gx EDITOR helix
 else if type -q code
     set -gx EDITOR code --wait
 else
