@@ -61,6 +61,15 @@ button.active {
   color: black;
 }
 
+#network {
+  min-width: 250px;
+}
+
+#custom-powermenu {
+  padding-left: 16px;
+  padding-right: 20px;
+}
+
 tooltip {
   /*background: transparent;*/
   /*box-shadow: 2px 2px 2px black;*/

@@ -41,6 +41,7 @@
       "interval": "once",
       "on-click": "loginctl lock-session",
       "tooltip": false,
+      "justify": "center",
     },
     "pulseaudio/slider": {
       "min": 0,
