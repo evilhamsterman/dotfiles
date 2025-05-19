@@ -15,7 +15,8 @@
       "memory",
       "network",
       "pulseaudio",
-      "tray"
+      "custom/notification",
+      "tray",
     ],
     // Modules configuration
     "hyprland/workspaces": {
@@ -67,9 +68,11 @@
       "format": "{usage}% {avg_frequency}Ghz  ",
       "justify": "center",
       "tooltip": false,
+      "on-click": "kitty btop",
     },
     "memory": {
-      "format": "{}% {used:0.1f}/{total:0.1f}GB  "
+      "format": "{}% {used:0.1f}/{total:0.1f}GB  ",
+      "on-click": "kitty btop",
     },
     "temperature": {
       "critical-threshold": 80,
@@ -100,8 +103,9 @@
       ]
     },
     "network": {
+      "interval": 2,
       "format-wifi": "  {essid}",
-      "format-ethernet": "{ifname}: {ipaddr}/{cidr} 󰈀 ",
+      "format-ethernet": "{ifname}: {bandwidthUpBits}󰕒 {bandwidthDownBits}󰇚",
       "format-linked": "{ifname} (No IP)  ",
       "format-disconnected": "睊 ",
       //"format-alt": "{ifname}: {ipaddr}/{cidr}",
