@@ -1,8 +1,8 @@
 * {
   border: none;
   border-radius: 3;
-  font-family: "FiraCode";
-  font-size: 14px;
+  font-family: "Inter";
+  font-size: 20px;
 }
 
 window#waybar {
@@ -62,7 +62,7 @@ button.active {
 }
 
 #network {
-  min-width: 250px;
+  min-width: 300px;
 }
 
 #custom-powermenu {
