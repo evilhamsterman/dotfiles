@@ -26,7 +26,6 @@ end
 
 if type -q talosctl
     alias t=talosctl
-    set -Ux TALOSCONFIG $HOME/.config/talos/config.yaml
 end
 
 if type -q flux
