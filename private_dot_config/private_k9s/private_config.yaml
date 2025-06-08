@@ -7,11 +7,12 @@ k9s:
   noExitOnCtrlC: false
   portForwardAddress: localhost
   ui:
-    enableMouse: false
+    enableMouse: true
     headless: false
     logoless: false
     crumbsless: false
     reactive: false
+    splashless: true
     noIcons: false
     defaultsToFullScreen: false
     skin: everforest-dark
