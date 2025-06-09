@@ -1,6 +1,7 @@
 Invoke-Expression (&starship init powershell)
 $Env:SHELL = "pwsh.exe"
 $Env:EDITOR = "code --wait"
+$Env:Path += ";$HOME\.local\bin"
 
 function Test-CommandExists {
     param (
