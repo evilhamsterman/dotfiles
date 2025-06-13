@@ -43,13 +43,14 @@ spec:
       image: $image
 "
 
-  echo $manifests | kubectl create -f -
+  echo $manifests | kubectl create -f - > /dev/null
 
   echo " Waiting for $pod_name to start"
-  kubectl wait --for=condition=Ready pod/$pod_name
+  kubectl wait --for=condition=Ready pod/$pod_name > /dev/null
   echo "󱘖 Connecting to $pod_name"
-  kubectl exec -it $pod_name -- /usr/bin/fish -l -i
+  kubectl exec -it $pod_name -- sh -c 'cd /home/admin && /usr/bin/fish -i'
 
-  echo $manifests | kubectl delete -f -
+  echo "󰃢 Cleaning up"
+  echo $manifests | kubectl delete -f - > /dev/null
 
 end
