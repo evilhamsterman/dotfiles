@@ -32,11 +32,18 @@ Options:
     end
 
     set -f workspace $argv[1]
+    set -f workspace_name (string split - $workspace)[-1]
     set -e argv[1]
 
     if not string match -a $workspace $workspaces >> /dev/null
         echo "$workspace is not a valid workspace"
         return 1
+    end
+
+    set -f state (coder ls --search "$USER/$workspace_name" -o json | jq -r '.[0].latest_build.status')
+    if test $state != "running"
+        echo "Starting $workspace"
+        coder start $workspace_name
     end
 
     # # Create a temporary file for the known hosts
