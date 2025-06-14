@@ -1,17 +1,19 @@
-function kshell --description "Create a temporary pod in the current K8S cluster and exec to it" --wraps "kubectl"
+function kshell --description "Create a temporary pod in the current K8S cluster and exec to it" --wraps kubectl
 
-  if test $USER = dmills
-    set -f image qcr.corp.qumulo.com/it/network-multitool:latest
-  else
-    set -f image ghcr.io/evilhamsterman/network-multitool:latest
-  end
+    if test $USER = dmills
+        set -f image qcr.corp.qumulo.com/it/network-multitool:latest
+        set -f user $USER
+    else
+        set -f image ghcr.io/evilhamsterman/network-multitool:latest
+        set -f user dan
+    end
 
-  set -f pod_name "$(random)-dmills-kshell"
-  set -f svc_acct_name "$pod_name-svc"
+    set -f pod_name "$(random)-$user-kshell"
+    set -f svc_acct_name "$pod_name-svc"
 
-  set -f namespace (kubectl config view --minify --output 'jsonpath={..namespace}')
+    set -f namespace (kubectl config view --minify --output 'jsonpath={..namespace}')
 
-  set -f manifests "
+    set -f manifests "
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -43,14 +45,14 @@ spec:
       image: $image
 "
 
-  echo $manifests | kubectl create -f - > /dev/null
+    echo $manifests | kubectl create -f - >/dev/null
 
-  echo " Waiting for $pod_name to start"
-  kubectl wait --for=condition=Ready pod/$pod_name > /dev/null
-  echo "󱘖 Connecting to $pod_name"
-  kubectl exec -it $pod_name -- sh -c 'cd /home/admin && /usr/bin/fish -i'
+    echo " Waiting for $pod_name to start"
+    kubectl wait --for=condition=Ready pod/$pod_name >/dev/null
+    echo "󱘖 Connecting to $pod_name"
+    kubectl exec -it $pod_name -- sh -c "cd /home/$user && /usr/bin/fish -i"
 
-  echo "󰃢 Cleaning up"
-  echo $manifests | kubectl delete -f - > /dev/null
+    echo "󰃢 Cleaning up"
+    echo $manifests | kubectl delete -f - >/dev/null
 
 end
