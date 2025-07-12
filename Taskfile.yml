@@ -1,0 +1,24 @@
+version: 3
+
+tasks:
+  k3s-release:
+    internal: true
+    silent: true
+    requires:
+      vars:
+        - CHANNEL
+    cmd: echo "Latest K3S {{.CHANNEL}} version:" $(curl -sSL https://update.k3s.io/v1-release/channels | jq -r '.data[] | select(.id=="{{.CHANNEL}}") | .latest')
+
+  k3s-stable:
+    desc: Latest K3S Stable release
+    cmd:
+      task: k3s-release
+      vars:
+        CHANNEL: stable
+
+  k3s-latest:
+    desc: Latest K3S Stable release
+    cmd:
+      task: k3s-release
+      vars:
+        CHANNEL: latest
