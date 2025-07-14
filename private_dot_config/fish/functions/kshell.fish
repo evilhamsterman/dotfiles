@@ -2,7 +2,7 @@ function kshell --description "Create a temporary pod in the current K8S cluster
 
     if test $USER = dmills
         set -f image qcr.corp.qumulo.com/it/network-multitool:latest
-        set -f user $USER
+        set -f user admin
     else
         set -f image ghcr.io/evilhamsterman/network-multitool:latest
         set -f user dan
