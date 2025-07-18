@@ -13,11 +13,7 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
   {{- else if $codespaces }}
   email = "evilhamsterman@gmail.com"
   {{- else }}
-<<<<<<< Updated upstream
-  {{ $email := promptStringOnce . "email" "Enter email address" }}
-=======
   {{ $email := promptStringOnce . "email" "What is your email address"}}
->>>>>>> Stashed changes
   email = {{ $email | quote }}
   {{- end }}
 
