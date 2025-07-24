@@ -12,7 +12,7 @@ then
 fi
 
 # Install other packages
-PKGS="starship fish tmux mosh fzf bitwarden-cli pre-commit eza zoxide socat github-cli jq yq kubectx task"
+PKGS="starship fish tmux mosh fzf pre-commit eza zoxide socat github-cli jq yq kubectx task uv"
 yay -S $PKGS --noconfirm --needed
 
     {{ else if (eq .chezmoi.osRelease.id "debian" "ubuntu") }}
@@ -22,11 +22,14 @@ curl -sS https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo
 echo "deb http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list >/dev/null
 
 # Install apt packages
-sudo apt-get update && sudo apt-get install -y tmux fzf fish unzip eza socat
+sudo apt-get update && sudo apt-get install -y tmux fzf fish unzip eza socat pre-commit zoxide kubectx
 if command -v snap &> /dev/null
 then
-    for package in "yq" "jq" "task"; do
-        sudo snap install $package 2>/dev/null
+    for package in "yq" "jq"; do
+        sudo snap install $package
+    done
+    for package in "task"; do
+        sudo snap install $package --classic
     done
 fi
 
