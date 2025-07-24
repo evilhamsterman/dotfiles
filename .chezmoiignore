@@ -13,6 +13,3 @@ win-packages.json
 {{ if eq .chezmoi.os "linux" "darwin" }}
 AppData/
 {{ end }}
-{{ if .remote }}
-.gitconfig
-{{ end }}
