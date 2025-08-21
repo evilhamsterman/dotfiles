@@ -636,6 +636,7 @@ complete -c uv -n "__fish_uv_using_subcommand sync" -l python-platform -d 'The p
 linux\t'An alias for `x86_64-unknown-linux-gnu`, the default target for Linux'
 macos\t'An alias for `aarch64-apple-darwin`, the default target for macOS'
 x86_64-pc-windows-msvc\t'A 64-bit x86 Windows target'
+aarch64-pc-windows-msvc\t'An ARM64 Windows target'
 i686-pc-windows-msvc\t'A 32-bit x86 Windows target'
 x86_64-unknown-linux-gnu\t'An x86 Linux target. Equivalent to `x86_64-manylinux_2_28`'
 aarch64-apple-darwin\t'An ARM-based macOS target, as seen on Apple Silicon devices'
@@ -988,6 +989,7 @@ complete -c uv -n "__fish_uv_using_subcommand tree" -l python-platform -d 'The p
 linux\t'An alias for `x86_64-unknown-linux-gnu`, the default target for Linux'
 macos\t'An alias for `aarch64-apple-darwin`, the default target for macOS'
 x86_64-pc-windows-msvc\t'A 64-bit x86 Windows target'
+aarch64-pc-windows-msvc\t'An ARM64 Windows target'
 i686-pc-windows-msvc\t'A 32-bit x86 Windows target'
 x86_64-unknown-linux-gnu\t'An x86 Linux target. Equivalent to `x86_64-manylinux_2_28`'
 aarch64-apple-darwin\t'An ARM-based macOS target, as seen on Apple Silicon devices'
@@ -1823,6 +1825,7 @@ complete -c uv -n "__fish_uv_using_subcommand python; and __fish_seen_subcommand
 complete -c uv -n "__fish_uv_using_subcommand python; and __fish_seen_subcommand_from upgrade" -l directory -d 'Change to the given directory prior to running the command' -r -F
 complete -c uv -n "__fish_uv_using_subcommand python; and __fish_seen_subcommand_from upgrade" -l project -d 'Run the command within the given project directory' -r -F
 complete -c uv -n "__fish_uv_using_subcommand python; and __fish_seen_subcommand_from upgrade" -l config-file -d 'The path to a `uv.toml` file to use for configuration' -r -F
+complete -c uv -n "__fish_uv_using_subcommand python; and __fish_seen_subcommand_from upgrade" -s r -l reinstall -d 'Reinstall the latest Python patch, if it\'s already installed'
 complete -c uv -n "__fish_uv_using_subcommand python; and __fish_seen_subcommand_from upgrade" -s n -l no-cache -d 'Avoid reading from or writing to the cache, instead using a temporary directory for the duration of the operation'
 complete -c uv -n "__fish_uv_using_subcommand python; and __fish_seen_subcommand_from upgrade" -l managed-python -d 'Require use of uv-managed Python versions'
 complete -c uv -n "__fish_uv_using_subcommand python; and __fish_seen_subcommand_from upgrade" -l no-managed-python -d 'Disable use of uv-managed Python versions'
@@ -2131,6 +2134,7 @@ complete -c uv -n "__fish_uv_using_subcommand pip; and __fish_seen_subcommand_fr
 linux\t'An alias for `x86_64-unknown-linux-gnu`, the default target for Linux'
 macos\t'An alias for `aarch64-apple-darwin`, the default target for macOS'
 x86_64-pc-windows-msvc\t'A 64-bit x86 Windows target'
+aarch64-pc-windows-msvc\t'An ARM64 Windows target'
 i686-pc-windows-msvc\t'A 32-bit x86 Windows target'
 x86_64-unknown-linux-gnu\t'An x86 Linux target. Equivalent to `x86_64-manylinux_2_28`'
 aarch64-apple-darwin\t'An ARM-based macOS target, as seen on Apple Silicon devices'
@@ -2333,6 +2337,7 @@ complete -c uv -n "__fish_uv_using_subcommand pip; and __fish_seen_subcommand_fr
 linux\t'An alias for `x86_64-unknown-linux-gnu`, the default target for Linux'
 macos\t'An alias for `aarch64-apple-darwin`, the default target for macOS'
 x86_64-pc-windows-msvc\t'A 64-bit x86 Windows target'
+aarch64-pc-windows-msvc\t'An ARM64 Windows target'
 i686-pc-windows-msvc\t'A 32-bit x86 Windows target'
 x86_64-unknown-linux-gnu\t'An x86 Linux target. Equivalent to `x86_64-manylinux_2_28`'
 aarch64-apple-darwin\t'An ARM-based macOS target, as seen on Apple Silicon devices'
@@ -2529,6 +2534,7 @@ complete -c uv -n "__fish_uv_using_subcommand pip; and __fish_seen_subcommand_fr
 linux\t'An alias for `x86_64-unknown-linux-gnu`, the default target for Linux'
 macos\t'An alias for `aarch64-apple-darwin`, the default target for macOS'
 x86_64-pc-windows-msvc\t'A 64-bit x86 Windows target'
+aarch64-pc-windows-msvc\t'An ARM64 Windows target'
 i686-pc-windows-msvc\t'A 32-bit x86 Windows target'
 x86_64-unknown-linux-gnu\t'An x86 Linux target. Equivalent to `x86_64-manylinux_2_28`'
 aarch64-apple-darwin\t'An ARM-based macOS target, as seen on Apple Silicon devices'
