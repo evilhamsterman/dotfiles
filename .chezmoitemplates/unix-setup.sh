@@ -1,5 +1,5 @@
 {{ if (eq .chezmoi.os "linux") }}
-    {{ if (eq .chezmoi.osRelease.id "arch" "archarm" ) }}
+    {{ if (eq .chezmoi.osRelease.id "arch" "archarm" "cachyos" ) }}
 # Arch Linux setup
 # Check for and install yay
 if ! command -v yay &> /dev/null
