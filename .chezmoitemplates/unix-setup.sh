@@ -42,7 +42,7 @@ curl -sS https://starship.rs/install.sh | sh -s -- -y -b $HOME/.local/bin >/dev/
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 
 # Install uv
-if ! command -v uv &> /dev/null
+if ! command -v uv &> /dev/null; then
     curl -LsSf https://astral.sh/uv/install.sh | sh
 fi
 
