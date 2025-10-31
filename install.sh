@@ -15,14 +15,17 @@ if ! chezmoi="$(command -v chezmoi)"; then
 	bin_dir="${HOME}/.local/bin"
 	chezmoi="${bin_dir}/chezmoi"
 	echo "Installing chezmoi to '${chezmoi}'" >&2
-	if command -v curl >/dev/null; then
+	if command -v curl; then
+		echo "Using curl to get script"
 		chezmoi_install_script="$(curl -fsSL get.chezmoi.io)"
-	elif command -v wget >/dev/null; then
+	elif command -v wget; then
+		echo "Using wget to get script"
 		chezmoi_install_script="$(wget -qO- get.chezmoi.io)"
 	else
 		echo "To install chezmoi, you must have curl or wget installed." >&2
 		exit 1
 	fi
+	echo "Executing install script"
 	sh -c "${chezmoi_install_script}" -- -b "${bin_dir}"
 	unset chezmoi_install_script bin_dir
 fi
