@@ -26,7 +26,7 @@ if ! chezmoi="$(command -v chezmoi)"; then
 		exit 1
 	fi
 	echo "Executing install script"
-	sh -c "${chezmoi_install_script}" -- -b "${bin_dir}"
+	sh -c "${chezmoi_install_script}" -- -b "${bin_dir}" -d
 	unset chezmoi_install_script bin_dir
 fi
 
