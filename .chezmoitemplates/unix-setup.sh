@@ -23,7 +23,7 @@ echo "deb http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/
 
 # Install apt packages
 sudo apt-get update && sudo apt-get install -y tmux fzf fish unzip eza socat pre-commit zoxide kubectx
-if command -v snap &> /dev/null
+if command -v snap /dev/null
 then
     for package in "yq" "jq"; do
         sudo snap install $package
@@ -36,13 +36,23 @@ fi
 # All of these either have issues with the version in apt/snap or don't exist at all
 
 # Install starship
-curl -sS https://starship.rs/install.sh | sh -s -- -y -b $HOME/.local/bin >/dev/null
+echo "Checking for starship"
+if ! command -v starship; then
+    echo "Installing starship"
+    curl -sS https://starship.rs/install.sh | sh -s -- -y -b $HOME/.local/bin >/dev/null
+fi
 
 # Install zoxide
-curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+echo "Checking for zoxide"
+if ! command -v zoxide; then
+    echo "Installing zoxide"
+    curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+fi
 
 # Install uv
+echo "Checking for uv"
 if ! command -v uv &> /dev/null; then
+    echo "Installing uv"
     curl -LsSf https://astral.sh/uv/install.sh | sh
 fi
 
