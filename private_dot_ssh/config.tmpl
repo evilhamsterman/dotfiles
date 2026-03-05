@@ -1,11 +1,11 @@
 AddKeysToAgent yes
+ForwardAgent yes
+{{ if (eq .chezmoi.os "darwin") }}
+UseKeychain yes
+{{ end }}
 
-Host *
-  {{ if (eq .chezmoi.os "darwin") }}
-  UseKeychain yes
-  {{ end }}
-  AddKeysToAgent yes
-  ForwardAgent yes
+# Include extras
+Include config.d/*
 
 # vCenter
 Host it-vc*
@@ -24,5 +24,3 @@ Host *.qumulo.com
 Host *.mills.haus
   User dan
 
-# Include extras
-Include config.d/*
