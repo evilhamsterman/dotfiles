@@ -4,12 +4,18 @@
       "selectedType": "oauth-personal"
     }
   },
-  "contextFileName": "AGENTS.md",
+  "context":{
+    "fileName": ["AGENTS.md", "GEMINI.md"]
+  },
   "general": {
     "sessionRetention": {
       "warningAcknowledged": true,
       "enabled": true,
       "maxAge": "120d"
     }
+  },
+  "experimental": { "enableAgents": true },
+  "ui": {
+    "theme": "GitHub"
   }
 }
