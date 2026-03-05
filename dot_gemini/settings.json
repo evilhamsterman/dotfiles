@@ -4,5 +4,12 @@
       "selectedType": "oauth-personal"
     }
   },
-  "contextFileName": "AGENTS.md"
+  "contextFileName": "AGENTS.md",
+  "general": {
+    "sessionRetention": {
+      "warningAcknowledged": true,
+      "enabled": true,
+      "maxAge": "120d"
+    }
+  }
 }
