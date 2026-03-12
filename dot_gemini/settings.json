@@ -8,26 +8,15 @@
     "fileName": ["AGENTS.md", "GEMINI.md"]
   },
   "general": {
-    "vimMode": true,
     "defaultApprovalMode": "plan",
-    "hideTips": true,
     "sessionRetention": {
       "warningAcknowledged": true,
       "enabled": true,
       "maxAge": "120d"
     }
   },
-  "experimental": {
-    "enableAgents": true,
-    "modelSteering": true
-  },
+  "experimental": { "enableAgents": true },
   "ui": {
-    "theme": "GitHub",
-    "loadingPhrases": "all"
-  },
-  "tools": {
-    "shell": {
-      "showColor": true
-    }
+    "theme": "GitHub"
   }
 }
