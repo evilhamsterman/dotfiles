@@ -58,7 +58,3 @@ end
 if type -q go-task
     alias task=go-task
 end
-
-if type -q npx
-    alias gemini="npx @google/gemini-cli"
-end
