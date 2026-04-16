@@ -4,8 +4,11 @@
       "selectedType": "oauth-personal"
     }
   },
-  "context":{
-    "fileName": ["AGENTS.md", "GEMINI.md"]
+  "context": {
+    "fileName": [
+      "AGENTS.md",
+      "GEMINI.md"
+    ]
   },
   "general": {
     "vimMode": true,
@@ -23,11 +26,15 @@
   },
   "ui": {
     "theme": "GitHub",
-    "loadingPhrases": "all"
+    "loadingPhrases": "off"
   },
   "tools": {
     "shell": {
       "showColor": true
     }
+  },
+  "ide": {
+    "hasSeenNudge": true,
+    "enabled": true
   }
 }
