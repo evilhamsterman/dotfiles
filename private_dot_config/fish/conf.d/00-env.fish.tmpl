@@ -57,6 +57,11 @@ if test -d $HOME/.rd
     fish_add_path -aP $HOME/.rd/bin
 end
 
+# Set GitHub PAT for Gemini CLI MCP extension if gh is available
+if type -q gh
+    set -gx GITHUB_MCP_PAT (gh auth token)
+end
+
 {{/* Linux stuff */}}
 {{if eq .chezmoi.os "linux"}}
 # Add snap to path if it exists
