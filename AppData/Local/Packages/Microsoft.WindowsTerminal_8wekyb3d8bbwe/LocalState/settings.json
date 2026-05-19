@@ -16,6 +16,14 @@
             "id": "User.paste"
         },
         {
+            "command": "toggleBroadcastInput",
+            "id": "User.toggleBroadcastInput"
+        },
+        {
+            "command": "find",
+            "id": "User.find"
+        },
+        {
             "command": 
             {
                 "action": "splitPane",
@@ -23,10 +31,6 @@
                 "splitMode": "duplicate"
             },
             "id": "User.splitPane.A6751878"
-        },
-        {
-            "command": "find",
-            "id": "User.find"
         }
     ],
     "copyFormatting": "none",
@@ -39,12 +43,16 @@
             "keys": "ctrl+c"
         },
         {
+            "id": "User.paste",
+            "keys": "ctrl+v"
+        },
+        {
             "id": "User.find",
             "keys": "ctrl+shift+f"
         },
         {
-            "id": "User.paste",
-            "keys": "ctrl+v"
+            "id": "User.toggleBroadcastInput",
+            "keys": "ctrl+alt+b"
         },
         {
             "id": "User.splitPane.A6751878",
@@ -144,6 +152,42 @@
                 "guid": "{6226aa06-bb94-5f58-b847-bdcd86eb87dd}",
                 "hidden": false,
                 "name": "rancher-desktop",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{05812c75-2228-5e45-8ce6-18003c8300ca}",
+                "hidden": false,
+                "name": "rancher-desktop",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{8373e82c-f79b-5012-8eed-e5efaf12d7a0}",
+                "hidden": false,
+                "name": "rancher-desktop",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{0018fa0d-4a92-58b5-a66a-0a56a05e5f3e}",
+                "hidden": false,
+                "name": "rancher-desktop",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{f42ee18d-3188-5968-a84d-3a2bcc733902}",
+                "hidden": false,
+                "name": "rancher-desktop",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{1920f926-47d2-5471-9770-cc877ff0909f}",
+                "hidden": false,
+                "name": "rancher-desktop",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{c5cecccc-7dd5-5032-9d30-91861f8a6035}",
+                "hidden": false,
+                "name": "rancher-desktop-data",
                 "source": "Microsoft.WSL"
             }
         ]
