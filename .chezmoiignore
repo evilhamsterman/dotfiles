@@ -13,3 +13,6 @@ win-packages.json
 {{ if eq .chezmoi.os "linux" "darwin" }}
 AppData/
 {{ end }}
+# AI tool directories - created by run_once script, contents are untracked
+.local/aibin/**
+.local/share/aisecrets/**
