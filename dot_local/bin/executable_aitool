@@ -1,0 +1,27 @@
+#!/usr/bin/env fish
+
+# Determine which tool to run based on the name this script was invoked as
+set -l tool (basename (status filename))
+
+# Add AI-specific bin directories to PATH for the tool's runtime environment
+set -x PATH ~/.local/aibin ~/.local/share/node_modules/bin $PATH
+
+# Load secrets from all files in the aisecrets directory
+set -l secrets_dir ~/.local/share/aisecrets
+if test -d $secrets_dir
+    for secret_file in (find $secrets_dir -maxdepth 1 -type f | sort)
+        source $secret_file
+    end
+end
+
+# Search explicitly in AI bin directories rather than PATH to avoid recursive
+# invocation when a same-named symlink exists in ~/.local/bin
+for dir in ~/.local/aibin ~/.local/share/node_modules/bin
+    set -l tool_path $dir/$tool
+    if test -x $tool_path
+        exec $tool_path $argv
+    end
+end
+
+echo "aitool: '$tool' not found in ~/.local/aibin or ~/.local/share/node_modules/bin" >&2
+exit 1
