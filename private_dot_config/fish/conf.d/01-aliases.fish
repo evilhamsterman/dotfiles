@@ -58,3 +58,7 @@ end
 if type -q go-task
     alias task=go-task
 end
+
+if type -q openstack
+    alias os=openstack
+end
