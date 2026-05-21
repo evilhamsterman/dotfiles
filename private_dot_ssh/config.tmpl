@@ -4,6 +4,10 @@ ForwardAgent yes
 UseKeychain yes
 {{ end }}
 
+Host *
+  IgnoreUnknown WarnWeakCrypto
+  WarnWeakCrypto no-pq-kex
+
 # Include extras
 Include config.d/*
 
