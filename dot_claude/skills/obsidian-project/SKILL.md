@@ -92,6 +92,7 @@ Write `"$VAULT/Projects/<ProjectName>/<ProjectName>.md"` using this template:
 
 ## Notes
 *Created: <YYYY-MM-DD>*
+*Last edited: <YYYY-MM-DD>*
 ```
 
 Get today's date: `date +%Y-%m-%d`

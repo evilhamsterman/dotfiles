@@ -97,7 +97,16 @@ If the user's update changes the Priority or moves the project to/from Blocked s
 
 Only touch the index for priority/blocking changes — not for routine progress updates.
 
-### Step 5 — Confirm to user
+### Step 5 — Update the Last edited line
+
+After all section edits, update or append the `*Last edited:*` line at the very bottom of the file:
+
+- If the file already contains a `*Last edited:*` line, replace it: `*Last edited: <YYYY-MM-DD>*`
+- If no such line exists, append it on a new line at the end of the file
+
+This line is used by `daily-briefing` for staleness detection (more reliable than filesystem timestamps on Google Drive mounts).
+
+### Step 6 — Confirm to user
 
 Tell the user which project was updated, which sections changed, and show the updated content.
 

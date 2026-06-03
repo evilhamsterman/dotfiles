@@ -68,6 +68,8 @@ Write this template (substitute all `<PLACEHOLDER>` values):
 
 ## Open Questions
 -
+
+*Last edited: <YYYY-MM-DD>*
 ```
 
 - Get today's date: `date +%Y-%m-%d`
@@ -88,7 +90,8 @@ Write this template (substitute all `<PLACEHOLDER>` values):
 <New content>
 ```
 
-Do NOT modify or rewrite existing content — append only.
+- Then update the `*Last edited:*` line: if it exists anywhere in the file, replace it; otherwise append it after the new content
+- Do NOT modify or rewrite any other existing content — append only.
 
 ### After writing
 

@@ -95,11 +95,12 @@ project in (QIT, QITSD) AND status in ("In Progress", "To Do") AND updated >= -1
 Request fields: `["summary", "status", "priority", "issuetype", "assignee", "updated"]`
 Set `maxResults: 25` for each query, `responseContentFormat: "markdown"`.
 
-Format output grouped by priority:
+Format each ticket as a markdown link using `https://qumulo.atlassian.net/browse/<KEY>`:
+
 ```
-🔴 [QIT-123] Critical ticket title (In Progress)
-🟠 [QIT-456] High priority ticket (To Do)
-🟡 [QITSD-78] Medium ticket (In Progress)
+🔴 [QIT-123](https://qumulo.atlassian.net/browse/QIT-123) Critical ticket title (In Progress)
+🟠 [QIT-456](https://qumulo.atlassian.net/browse/QIT-456) High priority ticket (To Do)
+🟡 [QITSD-78](https://qumulo.atlassian.net/browse/QITSD-78) Medium ticket (In Progress)
 ```
 
 Use emoji for priority: 🔴 Highest/Critical, 🟠 High, 🟡 Medium, 🔵 Low.
@@ -121,17 +122,24 @@ For Critical and High Priority projects, read their full notes and extract:
 
 ### 4c — Detect stale projects
 
-For every project in the index (Critical, High, Active tiers), check the last-modified time of its note file:
+For every project in the index (Critical, High, Active tiers), extract the `*Last edited:*` date from its note file — this is more reliable than `stat` on Google Drive mounts where sync updates filesystem timestamps regardless of edits:
 
 ```bash
-stat -c "%Y" "$VAULT/Projects/<Name>/<Name>.md"
+grep -m1 "Last edited:" "$VAULT/Projects/<Name>/<Name>.md" | grep -oP '\d{4}-\d{2}-\d{2}'
 ```
 
-Compare against `TARGET_DATE`. A project is **stale** if:
-- Its priority is Critical or High AND the note hasn't been modified in **> 7 days**
-- Its priority is Active AND the note hasn't been modified in **> 14 days**
+If no `*Last edited:*` line exists, fall back to the `*Created:*` line the same way.
 
-List stale projects with: project name, priority, and how many days since last update.
+Compute days since that date:
+```bash
+echo $(( ( $(date -d "<TARGET_DATE>" +%s) - $(date -d "<last-edited-date>" +%s) ) / 86400 ))
+```
+
+A project is **stale** if:
+- Its priority is Critical or High AND last edited **> 7 days** before TARGET_DATE
+- Its priority is Active AND last edited **> 14 days** before TARGET_DATE
+
+List stale projects with: project name, priority, and how many days since last edit.
 
 ### 4d — Read General SRE reminders
 
