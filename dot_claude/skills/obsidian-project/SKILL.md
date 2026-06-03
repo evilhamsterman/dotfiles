@@ -60,7 +60,8 @@ If a match exists, read that project's note and tell the user — do NOT overwri
 ### Step 3 — Create the project directory and note
 
 ```bash
-mkdir -p "$VAULT/Projects/<ProjectName>"
+mkdir -p "$VAULT/Projects/<ProjectName>/Notes"
+mkdir -p "$VAULT/Projects/<ProjectName>/Research"
 ```
 
 Write `"$VAULT/Projects/<ProjectName>/<ProjectName>.md"` using this template:
@@ -90,7 +91,12 @@ Write `"$VAULT/Projects/<ProjectName>/<ProjectName>.md"` using this template:
 ## Links & Resources
 
 
+## Research
+<!-- Research files live in Research/ — links added here automatically -->
+
 ## Notes
+<!-- Note files live in Notes/ — links added here automatically -->
+
 *Created: <YYYY-MM-DD>*
 *Last edited: <YYYY-MM-DD>*
 ```

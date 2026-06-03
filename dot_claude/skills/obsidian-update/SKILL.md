@@ -3,16 +3,19 @@ name: obsidian-update
 description: Update an existing project note in the Obsidian vault. Use when the user says "update the project note", "mark this as done", "add a next action", "update progress on X", "this is now blocked by X", "we decided to use X", "log a technical decision", "add a link to the project", "change the status", or names a specific project followed by a status change or update. Also trigger when the user says "update Staq", "update DB migration", or any project name alongside information that should be recorded.
 allowed-tools:
   - Read
+  - Write
   - Edit
   - Bash(find *)
   - Bash(grep *)
   - Bash(ls *)
+  - Bash(mkdir *)
   - Bash(test *)
   - Bash(date *)
   - Bash(uname *)
   - mcp__claude_ai_Google_Drive__search_files
   - mcp__claude_ai_Google_Drive__read_file_content
   - mcp__claude_ai_Google_Drive__download_file_content
+  - mcp__claude_ai_Google_Drive__create_file
 ---
 
 # Obsidian Project Update Skill
@@ -62,7 +65,8 @@ Always read the full current content of the project file before making any edits
 | "done with task X" / "check off X" | `## Next Actions` | Change `- [ ] X` → `- [x] X` |
 | "decided to use X because Y" | `## Technical Decisions` | Add table row |
 | "add link" / "resource is X" | `## Links & Resources` | Append line |
-| "note: ..." / "add note" / "FYI ..." | `## Notes` | Append `*YYYY-MM-DD:* <content>` |
+| "note: ..." / "add note" / "FYI ..." | `Notes/` subfolder | Create new note file; add wiki link to `## Notes` in main file |
+| "research: ..." / "save research on X" | `Research/` subfolder | Create new research file; add wiki link to `## Research` in main file |
 
 Get today's date for notes: `date +%Y-%m-%d`
 
@@ -85,7 +89,45 @@ Use **Edit** (never Write) for all modifications. Make the smallest correct chan
 
 **Links & Resources:** Append new links as `- <Description>: <URL>` or `- <URL>`
 
-**Notes:** Append `*<YYYY-MM-DD>:* <content>` — never edit existing notes entries
+**Notes — create a file, not inline content:**
+
+Notes and research are stored as separate files in subfolders, not appended inline to the main file. The main file's `## Notes` and `## Research` sections are link indexes only.
+
+*Adding a note:*
+1. Derive a short slug from the content: lowercase, hyphens, e.g. `equinix-bgp-config`
+2. Create the directory if needed: `mkdir -p "$VAULT/Projects/<ProjectName>/Notes"`
+3. Write `"$VAULT/Projects/<ProjectName>/Notes/<YYYY-MM-DD>-<slug>.md"`:
+   ```markdown
+   # <Title>
+
+   *Project: [[../<ProjectName>]]*
+   *Date: <YYYY-MM-DD>*
+
+   <Content>
+
+   *Last edited: <YYYY-MM-DD>*
+   ```
+4. Add a wiki link to the main file's `## Notes` section using Edit:
+   `- [[Notes/<YYYY-MM-DD>-<slug>|<Title>]] — <YYYY-MM-DD>`
+   If the `## Notes` section doesn't exist, append it before the `*Created:*` line.
+
+*Adding research:*
+1. Derive a slug from the topic
+2. Create the directory if needed: `mkdir -p "$VAULT/Projects/<ProjectName>/Research"`
+3. Write `"$VAULT/Projects/<ProjectName>/Research/<slug>.md"`:
+   ```markdown
+   # <Title>
+
+   *Project: [[../<ProjectName>]]*
+   *Date: <YYYY-MM-DD>*
+
+   <Content>
+
+   *Last edited: <YYYY-MM-DD>*
+   ```
+4. Add a wiki link to the main file's `## Research` section using Edit:
+   `- [[Research/<slug>|<Title>]] — <YYYY-MM-DD>`
+   If the `## Research` section doesn't exist, append it before `## Notes`.
 
 ### Step 4 — Update Projects-Index.md if priority changed
 
