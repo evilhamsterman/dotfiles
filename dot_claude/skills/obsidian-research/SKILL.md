@@ -21,15 +21,17 @@ allowed-tools:
 
 ## Vault Path Detection
 
-At the start of every task, run this to determine the vault path:
+At the start of every task, run these checks in order and use the first path that exists:
 
 ```bash
+test -d "$HOME/Documents/notes" && echo "RCLONE"
 test -d "/mnt/g/My Drive/notes" && echo "WSL"
 ```
 
-- If prints "WSL" → `VAULT="/mnt/g/My Drive/notes"` (WSL with G: drive mounted — primary)
-- If on Windows native (Claude Desktop): `uname -s` won't be available or will show a Windows indicator — use `VAULT="G:\My Drive\notes"`
-- If neither local path is accessible → use Google Drive MCP fallback (see below)
+1. `$HOME/Documents/notes` exists → `VAULT="$HOME/Documents/notes"` (rclone mount — primary)
+2. `/mnt/g/My Drive/notes` exists → `VAULT="/mnt/g/My Drive/notes"` (WSL with G: mounted)
+3. Windows native (Claude Desktop, no WSL paths) → `VAULT="G:\My Drive\notes"`
+4. None of the above → Google Drive MCP fallback (see below)
 
 ## Task: Save or Append a Research Note
 
