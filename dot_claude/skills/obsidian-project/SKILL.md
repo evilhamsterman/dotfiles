@@ -137,8 +137,18 @@ Tell the user:
 
 If no local vault path is accessible:
 
-1. Find the Projects folder: `mcp__claude_ai_Google_Drive__search_files`
-2. Read Projects-Index.md: `mcp__claude_ai_Google_Drive__read_file_content`
-3. Create the new project note: `mcp__claude_ai_Google_Drive__create_file` — **always specify `mimeType: text/plain`** so the file is stored as plain Markdown, not a Google Doc
-4. Note: folder/directory structure cannot be created via MCP — warn the user that the project subdirectory won't exist and Obsidian sync may need to create it
-5. Provide the updated Projects-Index.md row for the user to paste if the index cannot be updated via MCP
+**Always use these parameters when calling `create_file`:**
+- `contentMimeType: "text/plain"`
+- `disableConversionToGoogleType: true`
+- `parentId: <folder-id>`
+
+Both flags are required. Without `disableConversionToGoogleType`, Drive silently converts `text/plain` to a Google Doc.
+
+**Step-by-step:**
+
+1. Find the Projects folder ID: search `title = 'Projects' and mimeType = 'application/vnd.google-apps.folder'`
+2. Create the project note with the template content, `contentMimeType: text/plain`, `disableConversionToGoogleType: true`, `parentId`
+3. Note: subfolder (project directory) cannot be created via MCP — warn the user; Obsidian sync will create it when the vault next syncs
+4. For Projects-Index.md: search `title = 'Projects-Index.md' and '<projects-folder-id>' in parents`, read it, build the updated content with the new row, then create a replacement file
+   - Tell the user: "Old Projects-Index.md ID: `<id>` — trash it in Google Drive to remove the duplicate"
+5. Provide the new Projects-Index.md row to the user in case they prefer to paste it manually

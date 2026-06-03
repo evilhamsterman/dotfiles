@@ -105,7 +105,19 @@ If the user provides a large update ("here's what happened this week: ..."), pro
 
 If no local vault path is accessible:
 
-1. Find the project file: `mcp__claude_ai_Google_Drive__search_files`
+**Always use these parameters when calling `create_file`:**
+- `contentMimeType: "text/plain"`
+- `disableConversionToGoogleType: true`
+- `parentId: <folder-id>`
+
+Both flags are required. Without `disableConversionToGoogleType`, Drive silently converts `text/plain` to a Google Doc.
+
+**Step-by-step:**
+
+1. Find the project file: search `title = '<ProjectName>.md' and '<projects-folder-id>' in parents`
 2. Read it: `mcp__claude_ai_Google_Drive__read_file_content` or `download_file_content`
-3. Since MCP doesn't support surgical edits, build the complete updated file content in memory and recreate the file using `mcp__claude_ai_Google_Drive__create_file` with **`mimeType: text/plain`**
-4. Warn the user that the MCP path replaces the full file content
+3. Apply all changes in memory to build the full updated file content
+4. Create the replacement file with the same name, `contentMimeType: text/plain`, `disableConversionToGoogleType: true`, `parentId`
+5. Tell the user: "Old file ID: `<id>` — trash it in Google Drive to remove the duplicate"
+
+Note: MCP cannot do surgical edits — the full file is replaced. This is why local path (WSL or Windows) is always preferred for updates.

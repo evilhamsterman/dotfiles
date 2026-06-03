@@ -99,10 +99,24 @@ Tell the user:
 
 If no local vault path is accessible:
 
-1. Search for the Research folder: `mcp__claude_ai_Google_Drive__search_files` with query `name contains "Research" and mimeType = "application/vnd.google-apps.folder"`
-2. If the file exists, read it: `mcp__claude_ai_Google_Drive__read_file_content`
-3. To create or update: `mcp__claude_ai_Google_Drive__create_file` — **always specify `mimeType: text/plain`** so the file is stored as plain Markdown, not a Google Doc. Without this, Drive creates a Google Doc that Obsidian cannot sync correctly.
-4. Tell the user the MCP path was used.
+**Always use these parameters when calling `create_file`:**
+- `contentMimeType: "text/plain"`
+- `disableConversionToGoogleType: true`
+- `parentId: <folder-id>`
+
+Both flags are required. Without `disableConversionToGoogleType`, Drive silently converts `text/plain` to a Google Doc that Obsidian cannot sync as Markdown.
+
+**Step-by-step:**
+
+1. Find the Research folder ID: search with `title = 'Research' and mimeType = 'application/vnd.google-apps.folder'`
+2. Search for an existing note: `title = '<topic-slug>.md' and '<folder-id>' in parents`
+3. If the file exists:
+   - Read it with `mcp__claude_ai_Google_Drive__read_file_content`
+   - Build the full updated content (append new section)
+   - Create a new file with the same name, `contentMimeType: text/plain`, `disableConversionToGoogleType: true`, `parentId`
+   - Tell the user: "Old file ID: `<id>` — trash it in Google Drive to remove the duplicate"
+4. If the file does not exist: create it directly with the template content
+5. Tell the user the MCP path was used
 
 ## Quality Standard
 
