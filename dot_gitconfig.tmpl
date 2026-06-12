@@ -8,16 +8,11 @@
 [user]
     name = Dan Mills
     email = "{{ .email }}"
-{{ if and (eq .chezmoi.os "linux") (not .remote) }}
+{{ with lookPath "gh" }}
 [credential "https://github.com"]
-    helper = !/usr/bin/gh auth git-credential
+    helper = !{{ . }} auth git-credential
 [credential "https://gist.github.com"]
-    helper = !/usr/bin/gh auth git-credential
-{{ else if eq .chezmoi.os "darwin" }}
-[credential "https://github.com"]
-    helper = !/usr/local/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-    helper = !/usr/local/bin/gh auth git-credential
+    helper = !{{ . }} auth git-credential
 {{ end }}
 {{ end }}
 
