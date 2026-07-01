@@ -1,6 +1,0 @@
-{
-  "model": "opus[1m]",
-  "theme": "auto",
-  "inputNeededNotifEnabled": true,
-  "agentPushNotifEnabled": true
-}
