@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+"""Emit the chezmoi-defined Claude Code settings, carrying over a few keys
+from whatever is already on disk since those vary per-device.
+"""
+
+import json
+import sys
+from typing import Any
+
+CONFIG: dict[str, Any] = {
+    "theme": "auto",
+    "inputNeededNotifEnabled": True,
+    "agentPushNotifEnabled": True,
+    "alwaysThinkingEnabled": True,
+    "remoteControlAtStartup": True,
+    "permissions": {"defaultMode": "auto"},
+}
+
+DEVICE_SPECIFIC_KEYS: tuple[str, ...] = ("model", "thinking")
+
+
+def main() -> None:
+    raw = sys.stdin.read()
+    try:
+        current: dict[str, Any] = json.loads(raw) if raw.strip() else {}
+    except json.JSONDecodeError:
+        current = {}
+
+    merged = dict(CONFIG)
+    for key in DEVICE_SPECIFIC_KEYS:
+        if key in current:
+            merged[key] = current[key]
+
+    json.dump(merged, sys.stdout, indent=2)
+    sys.stdout.write("\n")
+
+
+if __name__ == "__main__":
+    main()
