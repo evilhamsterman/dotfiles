@@ -9,6 +9,7 @@ allowed-tools:
   - Bash(grep *)
   - Bash(ls *)
   - Bash(mkdir *)
+  - Bash(mv *)
   - Bash(test *)
   - Bash(date *)
   - Bash(uname *)
@@ -47,6 +48,17 @@ find "$VAULT/Projects" -name "*.md" | grep -i "<partial-name>"
 ```
 
 List options and ask the user to confirm if multiple matches.
+
+If there's no match under `Projects/`, check whether it was already archived before telling the user it doesn't exist:
+```bash
+find "$VAULT/Archive/Projects" -maxdepth 3 -type d -iname "*<partial-name>*"
+```
+
+If it's found there, tell the user the project is archived at that path and ask whether they want to:
+- update the archived note in place (fine for a minor correction), or
+- move it back to `Projects/` first (reopening it) before updating — do this by `mv`-ing the folder back and adding it to the appropriate Projects-Index.md section, mirroring the reverse of what `obsidian-project-archive` does
+
+Don't silently update an archived project as if it were active — confirm intent first.
 
 Always read the full current content of the project file before making any edits.
 

@@ -14,6 +14,7 @@ CONFIG: dict[str, Any] = {
     "alwaysThinkingEnabled": True,
     "remoteControlAtStartup": True,
     "permissions": {"defaultMode": "auto"},
+    "editorMode": "vim",
 }
 
 DEVICE_SPECIFIC_KEYS: tuple[str, ...] = ("model", "thinking")

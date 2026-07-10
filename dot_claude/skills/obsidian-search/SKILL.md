@@ -43,7 +43,13 @@ When the user references a project by name (exact or approximate):
 ls "$VAULT/Projects/" | grep -i "<term>"
 ```
 
-Read the matching project note in full. Summarize: current status, phase, recent progress, and next actions.
+If no match in active `Projects/`, also check the archive before reporting nothing found:
+
+```bash
+find "$VAULT/Archive/Projects" -maxdepth 3 -type d -iname "*<term>*"
+```
+
+Read the matching project note in full. Summarize: current status, phase, recent progress, and next actions. If the match came from `Archive/Projects/`, say explicitly that the project is archived/completed and give its archive path.
 
 ### Strategy B — Full-text keyword search
 
@@ -77,7 +83,13 @@ When the user asks "what did I work on last week" or "notes from May":
 ls "$VAULT/Daily/" | grep "^<YYYY-MM>"
 ```
 
-Read matching daily notes and summarize activity across the date range — don't return them verbatim.
+Notes older than ~14 days have been moved out of `Daily/` by `obsidian-daily-archive` into `Archive/Daily/<YYYY>/<MM>/`. If the requested range isn't fully covered by what's in `Daily/` (e.g. "last month", or any date more than two weeks ago), also check:
+
+```bash
+ls "$VAULT/Archive/Daily/<YYYY>/<MM>/" 2>/dev/null | grep "^<YYYY-MM>"
+```
+
+Read matching daily notes (from either location) and summarize activity across the date range — don't return them verbatim.
 
 ### Strategy E — Project index overview
 
@@ -87,11 +99,13 @@ Read `"$VAULT/Projects/Projects-Index.md"` and return its contents, organized by
 
 ### Strategy F — Folder-scoped search
 
-When the user wants to restrict search to a specific area (Research, Daily, a specific project):
+When the user wants to restrict search to a specific area (Research, Daily, a specific project, or explicitly the archive):
 
 ```bash
 find "$VAULT/<folder>/" -name "*.md" | xargs grep -l -i "<keyword>" 2>/dev/null
 ```
+
+`<folder>` can be `Archive/Projects` or `Archive/Daily` when the user explicitly asks about archived/old/completed content.
 
 ## Presenting Results
 

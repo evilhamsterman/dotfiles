@@ -50,12 +50,15 @@ Gather the following — ask if not provided, but extract from natural language 
 
 ### Step 2 — Check for existing project
 
-Before creating, check:
+Before creating, check both active and archived projects:
 ```bash
 ls "$VAULT/Projects/" | grep -i "<ProjectName>"
+find "$VAULT/Archive/Projects" -maxdepth 3 -type d -iname "*<ProjectName>*"
 ```
 
-If a match exists, read that project's note and tell the user — do NOT overwrite. Offer to use `obsidian-update` instead.
+If a match exists in `Projects/`, read that project's note and tell the user — do NOT overwrite. Offer to use `obsidian-update` instead.
+
+If a match exists only in `Archive/Projects/`, tell the user a project with that name was already completed and archived (give the archive path) and ask whether they mean to restart/reopen it (move it back to `Projects/`) or want a genuinely new, separately named project.
 
 ### Step 3 — Create the project directory and note
 
