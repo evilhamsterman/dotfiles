@@ -24,3 +24,6 @@ The `typer` https://typer.tiangolo.com/ is preferred for command line applicatio
 
 Python code must be type hinted to the extent possible and pass `ruff` and `ty`
  
+## chezmoi
+
+Depending on my environment chezmoi uses vscode for diffs. Always use the command line flag `--use-builtin-diff` to force it to use it's built in diff tool.
