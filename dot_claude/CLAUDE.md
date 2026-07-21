@@ -27,3 +27,7 @@ Python code must be type hinted to the extent possible and pass `ruff` and `ty`
 ## chezmoi
 
 Depending on my environment chezmoi uses vscode for diffs. Always use the command line flag `--use-builtin-diff` to force it to use it's built in diff tool.
+
+## Kubernetes (k8s)
+
+Use the native `kubectl` wait and watch features rather than for loops when waiting for an object to reach a desired state
