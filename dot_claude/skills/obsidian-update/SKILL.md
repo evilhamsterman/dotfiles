@@ -35,6 +35,12 @@ test -d "/mnt/g/My Drive/notes" && echo "WSL"
 3. Windows native (Claude Desktop, no WSL paths) → `VAULT="G:\My Drive\notes"`
 4. None of the above → Google Drive MCP fallback (see below)
 
+## Writing Style
+
+- Be concise: short bullets, no filler, no restating context already covered elsewhere in the file.
+- Never duplicate content between the main project file and a linked Note/Research file — link instead of copying.
+- Keep the file reflecting only what's currently true: when an update supersedes or reverses something already recorded (a decision, a next action, a progress item), remove or replace the stale entry rather than appending alongside it — see the per-section guidance in Step 3.
+
 ## Task: Update a Project Note
 
 ### Step 1 — Find the project
@@ -76,6 +82,7 @@ Always read the full current content of the project file before making any edits
 | "add to-do" / "next action" / "need to do X" | `## Next Actions` | Append `- [ ] X` |
 | "done with task X" / "check off X" | `## Next Actions` | Change `- [ ] X` → `- [x] X` |
 | "decided to use X because Y" | `## Technical Decisions` | Add table row |
+| "we reversed X" / "no longer using X" / "that decision changed" | `## Technical Decisions` | Remove or replace the outdated row — don't leave it alongside the new one |
 | "add link" / "resource is X" | `## Links & Resources` | Append line |
 | "note: ..." / "add note" / "FYI ..." | `Notes/` subfolder | Create new note file; add wiki link to `## Notes` in main file |
 | "research: ..." / "save research on X" | `Research/` subfolder | Create new research file; add wiki link to `## Research` in main file |
@@ -92,18 +99,19 @@ Use **Edit** (never Write) for all modifications. Make the smallest correct chan
 - Completing: replace `⏳ <text>` or `🔄 <text>` with `✅ <text>` on the matching line
 - Starting: replace `⏳ <text>` with `🔄 <text>`
 - Adding: append `- ⏳ <new item>` to the list
+- If old ✅ items are no longer useful context, drop them instead of letting the list grow indefinitely
 
 **Next Actions:**
 - Completing: change `- [ ] <text>` → `- [x] <text>` — do NOT delete completed tasks; `[x]` items show history
 - Adding: append `- [ ] <text>`
 
-**Technical Decisions table:** Add new rows only. Never modify existing rows unless correcting an error.
+**Technical Decisions table:** Add rows for new decisions. If a decision is reversed or superseded, remove its row (or replace it in place) rather than leaving a stale entry — the table should reflect only decisions currently in effect.
 
 **Links & Resources:** Append new links as `- <Description>: <URL>` or `- <URL>`
 
 **Notes — create a file, not inline content:**
 
-Notes and research are stored as separate files in subfolders, not appended inline to the main file. The main file's `## Notes` and `## Research` sections are link indexes only.
+Notes and research are stored as separate files in subfolders, not appended inline to the main file. The main file's `## Notes` and `## Research` sections are link indexes only. Don't copy the project's Status or Overview into the new file — it already links back via `*Project: [[../<ProjectName>]]*`.
 
 *Adding a note:*
 1. Derive a short slug from the content: lowercase, hyphens, e.g. `equinix-bgp-config`

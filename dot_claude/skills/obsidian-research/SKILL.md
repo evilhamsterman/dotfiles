@@ -33,6 +33,12 @@ test -d "/mnt/g/My Drive/notes" && echo "WSL"
 3. Windows native (Claude Desktop, no WSL paths) → `VAULT="G:\My Drive\notes"`
 4. None of the above → Google Drive MCP fallback (see below)
 
+## Writing Style
+
+- Be concise: short bullets, no filler, no restating context already obvious from a link or header.
+- Never duplicate a related project's Status/Overview here — use `## Related Projects` to link to it instead.
+- Distill, don't transcribe — see Quality Standard below.
+
 ## Task: Save or Append a Research Note
 
 ### Determine the target file

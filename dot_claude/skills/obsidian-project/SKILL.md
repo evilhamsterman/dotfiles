@@ -34,6 +34,12 @@ test -d "/mnt/g/My Drive/notes" && echo "WSL"
 3. Windows native (Claude Desktop, no WSL paths) → `VAULT="G:\My Drive\notes"`
 4. None of the above → Google Drive MCP fallback (see below)
 
+## Writing Style
+
+- Be concise: short bullets, no filler, no restating context that's already obvious from the section header or a link.
+- Never duplicate content between the main project file and a linked Note/Research file — link to it (`[[Notes/...]]`, `[[Research/...]]`) instead of copying.
+- Only record what's currently true. Don't pre-populate placeholder sections with speculative content.
+
 ## Task: Create a New Project Note
 
 ### Step 1 — Collect information

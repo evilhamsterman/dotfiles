@@ -32,6 +32,10 @@ test -d "/mnt/g/My Drive/notes" && echo "WSL"
 3. Windows native (Claude Desktop, no WSL paths) → `VAULT="G:\My Drive\notes"`
 4. None of the above → Google Drive MCP fallback (see below)
 
+## Writing Style
+
+Short bullets, no filler. Don't restate the day's log verbatim in Accomplished — summarize.
+
 ## Get Today's Date
 
 ```bash
@@ -95,7 +99,7 @@ When the user says "EOD", "end of day note", or "wrap up today":
    - Decisions made
    - Blockers encountered
    - Projects touched
-2. Write a full update with all sections populated
+2. Write a full update with all sections populated — concise bullets, not a transcript
 3. Add wiki links to any project notes discussed today under a `## Project Links` section
 
 ## After Writing
