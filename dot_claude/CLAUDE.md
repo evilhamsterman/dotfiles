@@ -32,3 +32,24 @@ Depending on my environment chezmoi uses vscode for diffs. Always use the comman
 ## Kubernetes (k8s)
 
 Use the native `kubectl` wait and watch features rather than for loops when waiting for an object to reach a desired state
+
+## Infrastructure Context
+- Never assume hardware topology (socket count, disk layout, monitoring stack). Query the cluster/vCenter directly and cite the source before building any model or estimate.
+
+## Taskfile / Shell Conventions
+- Taskfile uses the mvdan `sh` interpreter: `umask`, some builtins, and complex `&&` chains are unsupported or short-circuit silently. Use explicit multi-line `cmds:` entries instead of chained `&&`.
+- Any task that echoes what it is about to run must echo the *exact* command string it executes — keep the echo and the command in sync or derive one from the other.
+- After writing a Taskfile task, run it end-to-end to verify before committing.
+
+## Kubernetes / Flux Conventions
+- This cluster is GitOps-managed by Flux: never use `kubectl rollout restart`, `kubectl edit`, or any imperative mutation as a fix — Flux will revert it. Ship changes as manifests via PR.
+- For any Job/CronJob that runs a shell script, use an image with a shell (e.g. `bitnami/kubectl` or `alpine/k8s`). Distroless images like `rancher/kubectl` have no `/bin/sh`.
+- New manifests must be added to the relevant `kustomization.yaml` and verified with `kustomize build` before opening the PR.
+
+## Git Workflow
+- Before pushing, run `git fetch origin && git log origin/main..HEAD` to confirm the branch is not already merged; rebase onto latest `main` rather than pushing onto a merged branch.
+- Use `scp` for file transfer to remote hosts; piped `copy terminal:` over stdin does not work in this environment.
+
+## Writing & Deliverables
+- Keep documentation and example code terse. Do not document internal decision rationale in example snippets, and do not expand capacity/edge-case detail beyond what was asked — the user consistently trims this.
+- For HTML/CSS slide decks and reports: render and visually verify every slide with Playwright before declaring done. Check specifically for inline-span leakage, slide overflow, and chart axis direction.
