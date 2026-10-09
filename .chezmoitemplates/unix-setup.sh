@@ -24,12 +24,12 @@ then
     for package in "yq" "jq"; do
         sudo snap install $package
     done
-    for package in "task"; do
+    for package in "task" "kubectx"; do
         sudo snap install $package --classic
     done
 fi
 
-# starship, uv, zoxide, eza, fzf and kubectx/kubens are managed by .chezmoiexternal.toml
+# starship, uv, zoxide, eza and fzf are managed by .chezmoiexternal.toml
 
     {{ end }}
 
