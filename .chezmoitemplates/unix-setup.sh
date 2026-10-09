@@ -17,12 +17,8 @@ yay -S $PKGS --noconfirm --needed
 
     {{ else if (eq .chezmoi.osRelease.id "debian" "ubuntu") }}
 # Debian
-# Add eza repo
-curl -sS https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo tee /etc/apt/trusted.gpg.d/gierens.asc >/dev/null
-echo "deb http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list >/dev/null
-
 # Install apt packages
-sudo apt-get update && sudo apt-get install -y tmux fzf fish unzip eza socat pre-commit zoxide kubectx
+sudo apt-get update && sudo apt-get install -y tmux fish unzip socat pre-commit
 if command -v snap /dev/null
 then
     for package in "yq" "jq"; do
@@ -33,23 +29,7 @@ then
     done
 fi
 
-# All of these either have issues with the version in apt/snap or don't exist at all
-
-# starship is managed by .chezmoiexternal.toml
-
-# Install zoxide
-echo "Checking for zoxide"
-if ! command -v zoxide; then
-    echo "Installing zoxide"
-    curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
-fi
-
-# Install uv
-echo "Checking for uv"
-if ! command -v uv &> /dev/null; then
-    echo "Installing uv"
-    curl -LsSf https://astral.sh/uv/install.sh | sh
-fi
+# starship, uv, zoxide, eza, fzf and kubectx/kubens are managed by .chezmoiexternal.toml
 
     {{ end }}
 

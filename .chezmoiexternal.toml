@@ -3,12 +3,58 @@
     url = "https://github.com/cosgroveb/chezmoi-skill.git"
     refreshPeriod = "168h"
 
-{{ if and (eq .chezmoi.os "linux") (not (eq .chezmoi.osRelease.id "arch" "archarm" "cachyos")) -}}
-{{ $arch := ternary "aarch64" "x86_64" (eq .chezmoi.arch "arm64") -}}
+{{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "debian" "ubuntu") -}}
+{{ $gnu := ternary "aarch64" "x86_64" (eq .chezmoi.arch "arm64") -}}
+{{ $go := .chezmoi.arch -}}
+{{ $kx := ternary "arm64" "x86_64" (eq .chezmoi.arch "arm64") -}}
+{{ $eza := ternary "aarch64-unknown-linux-gnu" "x86_64-unknown-linux-musl" (eq .chezmoi.arch "arm64") -}}
+{{ $zoxide := (gitHubLatestRelease "ajeetdsouza/zoxide").TagName | trimPrefix "v" -}}
+{{ $fzf := (gitHubLatestRelease "junegunn/fzf").TagName | trimPrefix "v" -}}
+{{ $kubectx := (gitHubLatestRelease "ahmetb/kubectx").TagName | trimPrefix "_" -}}
 [".local/bin/starship"]
     type = "archive-file"
-    url = {{ gitHubLatestReleaseAssetURL "starship/starship" (printf "starship-%s-unknown-linux-musl.tar.gz" $arch) | quote }}
+    url = {{ gitHubLatestReleaseAssetURL "starship/starship" (printf "starship-%s-unknown-linux-musl.tar.gz" $gnu) | quote }}
     path = "starship"
     executable = true
     refreshPeriod = "168h"
+
+{{ range $bin := list "uv" "uvx" -}}
+[".local/bin/{{ $bin }}"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "astral-sh/uv" (printf "uv-%s-unknown-linux-musl.tar.gz" $gnu) | quote }}
+    path = {{ printf "uv-%s-unknown-linux-musl/%s" $gnu $bin | quote }}
+    executable = true
+    refreshPeriod = "168h"
+
+{{ end -}}
+[".local/bin/zoxide"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "ajeetdsouza/zoxide" (printf "zoxide-%s-%s-unknown-linux-musl.tar.gz" $zoxide $gnu) | quote }}
+    path = "zoxide"
+    executable = true
+    refreshPeriod = "168h"
+
+[".local/bin/eza"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "eza-community/eza" (printf "eza_%s.tar.gz" $eza) | quote }}
+    path = "./eza"
+    executable = true
+    refreshPeriod = "168h"
+
+[".local/bin/fzf"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "junegunn/fzf" (printf "fzf-%s-linux_%s.tar.gz" $fzf $go) | quote }}
+    path = "fzf"
+    executable = true
+    refreshPeriod = "168h"
+
+{{ range $bin := list "kubectx" "kubens" -}}
+[".local/bin/{{ $bin }}"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "ahmetb/kubectx" (printf "%s_%s_linux_%s.tar.gz" $bin $kubectx $kx) | quote }}
+    path = {{ $bin | quote }}
+    executable = true
+    refreshPeriod = "168h"
+
+{{ end -}}
 {{ end -}}
