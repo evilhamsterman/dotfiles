@@ -35,12 +35,7 @@ fi
 
 # All of these either have issues with the version in apt/snap or don't exist at all
 
-# Install starship
-echo "Checking for starship"
-if ! command -v starship; then
-    echo "Installing starship"
-    curl -sS https://starship.rs/install.sh | sh -s -- -y -b $HOME/.local/bin >/dev/null
-fi
+# starship is managed by .chezmoiexternal.toml
 
 # Install zoxide
 echo "Checking for zoxide"
