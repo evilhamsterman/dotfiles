@@ -1,0 +1,4 @@
+{{ if eq .chezmoi.os "windows" -}}
+# windows-setup.ps1 {{ include ".chezmoitemplates/windows-setup.ps1" | sha256sum }}
+{{ template "windows-setup.ps1" -}}
+{{ end -}}
