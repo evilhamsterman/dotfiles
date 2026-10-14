@@ -54,3 +54,5 @@ Use the native `kubectl` wait and watch features rather than for loops when wait
 ## Writing & Deliverables
 - Keep documentation and example code terse. Do not document internal decision rationale in example snippets, and do not expand capacity/edge-case detail beyond what was asked — the user consistently trims this.
 - For HTML/CSS slide decks and reports: render and visually verify every slide with Playwright before declaring done. Check specifically for inline-span leakage, slide overflow, and chart axis direction.
+- Provide times in local Pacific time with UTC in brackets. Example 2:34PM (21:33 UTC)
+
