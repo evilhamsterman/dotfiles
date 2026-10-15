@@ -15,6 +15,9 @@ allowed-tools:
   - mcp__claude_ai_Atlassian__getAccessibleAtlassianResources
   - mcp__claude_ai_Atlassian__searchJiraIssuesUsingJql
   - mcp__claude_ai_Atlassian__getJiraIssue
+  - mcp__plugin_operations_atlassian__getAccessibleAtlassianResources
+  - mcp__plugin_operations_atlassian__searchJiraIssuesUsingJql
+  - mcp__plugin_operations_atlassian__getJiraIssue
 ---
 
 # Daily Briefing Skill
