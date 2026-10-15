@@ -56,8 +56,8 @@ Use the native `kubectl` wait and watch features rather than for loops when wait
 - For HTML/CSS slide decks and reports: render and visually verify every slide with Playwright before declaring done. Check specifically for inline-span leakage, slide overflow, and chart axis direction.
 
 ## Obsidian Projects
-- Every Obsidian project must have an associated Epic in the QIT Jira project (https://qumulo.atlassian.net/browse/QIT-<n>). Link it in the project note's `## Status` section as `**Jira Epic:**`. If none exists, find or create one before finishing project scaffolding.
-- A project can be archived once its QIT Epic is completed (Done). Check the Epic status before archiving.
+- Every QIT Jira Epic assigned to me must have an associated Obsidian project. Obsidian projects do not require an Epic; when one exists, link it in the project note's `## Status` section as `**Jira Epic:**` (https://qumulo.atlassian.net/browse/QIT-<n>).
+- A project with a linked Epic can be archived once the Epic is Done. Check the Epic status before archiving.
 
 ## Concurrency
 - Use agents for concurrency when possible: run independent work in parallel subagents rather than sequentially.

@@ -96,8 +96,6 @@ Use **Edit** (never Write) for all modifications. Make the smallest correct chan
 
 **Status section:** Find the exact current line and replace only that line.
 
-**Jira Epic:** Every project must have a `**Jira Epic:**` line in `## Status`. If the note being updated lacks one, tell the user and offer to find or create the QIT Epic (see `obsidian-project` Step 2b) and add the line after `Blocked by`.
-
 **Current Progress:** 
 - Completing: replace `⏳ <text>` or `🔄 <text>` with `✅ <text>` on the matching line
 - Starting: replace `⏳ <text>` with `🔄 <text>`

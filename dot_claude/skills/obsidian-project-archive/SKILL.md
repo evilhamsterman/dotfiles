@@ -62,13 +62,13 @@ find "$VAULT/Archive/Projects" -maxdepth 3 -type d -iname "*<name>*"
 
 If it's already archived, tell the user where it lives and stop — do not move it again.
 
-### Step 2 — Check the QIT Epic
+### Step 2 — Check the QIT Epic (if linked)
 
-A project is ready to archive when its QIT Epic is completed. Read the `**Jira Epic:**` key from the project note's `## Status` and check it with `getJiraIssue`.
+If the project note's `## Status` has a `**Jira Epic:**` line, check the key with `getJiraIssue`. A project with a linked Epic is ready to archive when the Epic is completed.
 
 - Status category Done → proceed, and use the Epic's resolution date as the default completion date.
 - Not Done → tell the user the Epic's current status and ask whether to archive anyway or wait.
-- No Epic line → tell the user, and offer to find the Epic (see `obsidian-project` Step 2b) before archiving.
+- No Epic line → nothing to check; proceed.
 
 ### Step 2b — Confirm completion details
 
