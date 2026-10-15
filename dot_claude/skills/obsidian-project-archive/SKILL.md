@@ -16,6 +16,8 @@ allowed-tools:
   - mcp__claude_ai_Google_Drive__search_files
   - mcp__claude_ai_Google_Drive__read_file_content
   - mcp__claude_ai_Google_Drive__create_file
+  - mcp__plugin_operations_atlassian__getJiraIssue
+  - mcp__plugin_operations_atlassian__searchJiraIssuesUsingJql
 ---
 
 # Obsidian Project Archive Skill
@@ -60,7 +62,15 @@ find "$VAULT/Archive/Projects" -maxdepth 3 -type d -iname "*<name>*"
 
 If it's already archived, tell the user where it lives and stop — do not move it again.
 
-### Step 2 — Confirm completion details
+### Step 2 — Check the QIT Epic
+
+A project is ready to archive when its QIT Epic is completed. Read the `**Jira Epic:**` key from the project note's `## Status` and check it with `getJiraIssue`.
+
+- Status category Done → proceed, and use the Epic's resolution date as the default completion date.
+- Not Done → tell the user the Epic's current status and ask whether to archive anyway or wait.
+- No Epic line → tell the user, and offer to find the Epic (see `obsidian-project` Step 2b) before archiving.
+
+### Step 2b — Confirm completion details
 
 - **Completion date** — default to today (`date +%Y-%m-%d`); use a different date only if the user specifies one (e.g. "we actually finished this last month")
 - **Completion note** — one line for the Projects Index (e.g. "MCP docs server PoC shipped"). Ask if not provided, or infer briefly from conversation context.

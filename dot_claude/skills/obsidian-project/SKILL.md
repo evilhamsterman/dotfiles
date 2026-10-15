@@ -16,6 +16,9 @@ allowed-tools:
   - mcp__claude_ai_Google_Drive__read_file_content
   - mcp__claude_ai_Google_Drive__create_file
   - mcp__claude_ai_Google_Drive__download_file_content
+  - mcp__plugin_operations_atlassian__searchJiraIssuesUsingJql
+  - mcp__plugin_operations_atlassian__createJiraIssue
+  - mcp__plugin_operations_atlassian__getJiraIssue
 ---
 
 # Obsidian Project Scaffolding Skill
@@ -53,6 +56,7 @@ Gather the following — ask if not provided, but extract from natural language 
 - **Blocked by** — what's blocking progress, or "Nothing currently"
 - **Overview** — 2-4 sentences: what is it, why does it exist, what's the goal
 - **Initial next actions** — at least one concrete task
+- **QIT Epic** — every project needs one (see Step 2b)
 
 ### Step 2 — Check for existing project
 
@@ -65,6 +69,16 @@ find "$VAULT/Archive/Projects" -maxdepth 3 -type d -iname "*<ProjectName>*"
 If a match exists in `Projects/`, read that project's note and tell the user — do NOT overwrite. Offer to use `obsidian-update` instead.
 
 If a match exists only in `Archive/Projects/`, tell the user a project with that name was already completed and archived (give the archive path) and ask whether they mean to restart/reopen it (move it back to `Projects/`) or want a genuinely new, separately named project.
+
+### Step 2b — Find or create the QIT Epic
+
+Every project must be linked to an Epic in the QIT Jira project (`https://qumulo.atlassian.net/browse/QIT-<n>`).
+
+1. If the user gave an Epic key, verify it with `getJiraIssue` (issue type must be Epic).
+2. Otherwise search for an existing one: `project = QIT AND issuetype = Epic AND summary ~ "<keywords>"`. If a likely match exists, confirm with the user.
+3. If none exists, create it with `createJiraIssue` (project `QIT`, type `Epic`, summary = project name/subtitle, description = Overview, assigned to Dan). Confirm with the user before creating.
+
+Use the resulting key as `<EpicKey>` below.
 
 ### Step 3 — Create the project directory and note
 
@@ -82,6 +96,7 @@ Write `"$VAULT/Projects/<ProjectName>/<ProjectName>.md"` using this template:
 - **Phase:** <Phase>
 - **Priority:** <Priority>
 - **Blocked by:** <Blocked-by>
+- **Jira Epic:** [<EpicKey>](https://qumulo.atlassian.net/browse/<EpicKey>)
 
 ## Overview
 <Overview>

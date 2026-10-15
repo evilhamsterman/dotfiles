@@ -54,5 +54,7 @@ Use the native `kubectl` wait and watch features rather than for loops when wait
 ## Writing & Deliverables
 - Keep documentation and example code terse. Do not document internal decision rationale in example snippets, and do not expand capacity/edge-case detail beyond what was asked — the user consistently trims this.
 - For HTML/CSS slide decks and reports: render and visually verify every slide with Playwright before declaring done. Check specifically for inline-span leakage, slide overflow, and chart axis direction.
-- Provide times in local Pacific time with UTC in brackets. Example 2:34PM (21:33 UTC)
 
+## Obsidian Projects
+- Every Obsidian project must have an associated Epic in the QIT Jira project (https://qumulo.atlassian.net/browse/QIT-<n>). Link it in the project note's `## Status` section as `**Jira Epic:**`. If none exists, find or create one before finishing project scaffolding.
+- A project can be archived once its QIT Epic is completed (Done). Check the Epic status before archiving.

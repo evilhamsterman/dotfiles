@@ -75,6 +75,7 @@ Always read the full current content of the project file before making any edits
 | "phase is now X" / "we're in X phase" | `## Status` | Replace the Phase line |
 | "priority changed to X" | `## Status` | Replace the Priority line |
 | "blocked by X" / "no longer blocked" | `## Status` | Replace the Blocked by line |
+| "epic is QIT-N" / "link the epic" | `## Status` | Replace or add the `- **Jira Epic:** [QIT-N](https://qumulo.atlassian.net/browse/QIT-N)` line |
 | "update overview" | `## Overview` | Replace the overview paragraph |
 | "done with X" / "completed X" / "✅ X" | `## Current Progress` | Change `⏳` or `🔄` → `✅` on matching item |
 | "working on X" / "started X" | `## Current Progress` | Change `⏳` → `🔄`, or add `- 🔄 X` |
@@ -94,6 +95,8 @@ Get today's date for notes: `date +%Y-%m-%d`
 Use **Edit** (never Write) for all modifications. Make the smallest correct change.
 
 **Status section:** Find the exact current line and replace only that line.
+
+**Jira Epic:** Every project must have a `**Jira Epic:**` line in `## Status`. If the note being updated lacks one, tell the user and offer to find or create the QIT Epic (see `obsidian-project` Step 2b) and add the line after `Blocked by`.
 
 **Current Progress:** 
 - Completing: replace `⏳ <text>` or `🔄 <text>` with `✅ <text>` on the matching line

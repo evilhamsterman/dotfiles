@@ -141,6 +141,21 @@ A project is **stale** if:
 
 List stale projects with: project name, priority, and how many days since last edit.
 
+### 4c2 — Detect projects ready to archive
+
+For every project in the index (all tiers), extract the `**Jira Epic:**` key from `## Status`:
+
+```bash
+grep -m1 "Jira Epic:" "$VAULT/Projects/<Name>/<Name>.md" | grep -oP 'QIT-\d+'
+```
+
+Check all keys in one query using `searchJiraIssuesUsingJql`:
+```
+key in (<QIT-1>, <QIT-2>, ...) AND statusCategory = Done
+```
+
+Projects whose Epic is Done are **ready to archive**. Projects with no Epic line are listed as **missing an Epic**. If Jira is unavailable, skip this check.
+
 ### 4d — Read General SRE reminders
 
 Read `"$VAULT/Projects/General-SRE/General-SRE.md"`.
@@ -204,6 +219,12 @@ Next: ...
 - **<Name>** (Critical) — last updated X days ago
 - **<Name>** (Active) — last updated X days ago
 
+## 📦 Ready to Archive
+> QIT Epic is Done — run /obsidian-project-archive:
+- **<Name>** — [QIT-123](https://qumulo.atlassian.net/browse/QIT-123)
+
+**Missing Epic:** <Name>, <Name> (omit if none)
+
 ## 📋 General SRE — Today's Reminders
 **Daily:**
 - Ticket triage — QIT, QITSD
@@ -221,6 +242,8 @@ Open items: <unchecked tasks if any>
 ```
 
 ---
+
+Omit the "Ready to Archive" section entirely if no projects qualify and none are missing an Epic.
 
 ## Parallelism
 
