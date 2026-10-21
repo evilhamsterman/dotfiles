@@ -19,17 +19,8 @@ yay -S $PKGS --noconfirm --needed
 # Debian
 # Install apt packages
 sudo apt-get update && sudo apt-get install -y tmux fish unzip socat pre-commit
-if command -v snap /dev/null
-then
-    for package in "yq" "jq"; do
-        sudo snap install $package
-    done
-    for package in "task" "kubectx"; do
-        sudo snap install $package --classic
-    done
-fi
 
-# starship, uv, zoxide, eza and fzf are managed by .chezmoiexternal.toml
+# starship, uv, zoxide, eza, fzf, jq, yq, task and kubectx are managed by .chezmoiexternal.toml
 
     {{ end }}
 

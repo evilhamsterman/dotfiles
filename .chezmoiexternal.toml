@@ -9,6 +9,8 @@
 {{ $eza := ternary "aarch64-unknown-linux-gnu" "x86_64-unknown-linux-musl" (eq .chezmoi.arch "arm64") -}}
 {{ $zoxide := (gitHubLatestRelease "ajeetdsouza/zoxide").TagName | trimPrefix "v" -}}
 {{ $fzf := (gitHubLatestRelease "junegunn/fzf").TagName | trimPrefix "v" -}}
+{{ $kubectx := (gitHubLatestRelease "ahmetb/kubectx").TagName | trimPrefix "v" -}}
+{{ $kubearch := ternary "arm64" "x86_64" (eq .chezmoi.arch "arm64") -}}
 [".local/bin/starship"]
     type = "archive-file"
     url = {{ gitHubLatestReleaseAssetURL "starship/starship" (printf "starship-%s-unknown-linux-musl.tar.gz" $gnu) | quote }}
@@ -46,4 +48,32 @@
     executable = true
     refreshPeriod = "168h"
 
+[".local/bin/jq"]
+    type = "file"
+    url = {{ gitHubLatestReleaseAssetURL "jqlang/jq" (printf "jq-linux-%s" $go) | quote }}
+    executable = true
+    refreshPeriod = "168h"
+
+[".local/bin/yq"]
+    type = "file"
+    url = {{ gitHubLatestReleaseAssetURL "mikefarah/yq" (printf "yq_linux_%s" $go) | quote }}
+    executable = true
+    refreshPeriod = "168h"
+
+[".local/bin/task"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "go-task/task" (printf "task_linux_%s.tar.gz" $go) | quote }}
+    path = "task"
+    executable = true
+    refreshPeriod = "168h"
+
+{{ range $bin := list "kubectx" "kubens" -}}
+[".local/bin/{{ $bin }}"]
+    type = "archive-file"
+    url = {{ gitHubLatestReleaseAssetURL "ahmetb/kubectx" (printf "%s_v%s_linux_%s.tar.gz" $bin $kubectx $kubearch) | quote }}
+    path = {{ $bin | quote }}
+    executable = true
+    refreshPeriod = "168h"
+
+{{ end -}}
 {{ end -}}
