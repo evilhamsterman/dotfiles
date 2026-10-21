@@ -11,7 +11,11 @@ if [ -d "$HOME/.config/chezmoi" ]; then
 	rm -r $HOME/.config/chezmoi
 fi
 
-if ! chezmoi="$(command -v chezmoi)"; then
+chezmoi="$(command -v chezmoi || true)"
+# snap-provided chezmoi can't run in environments without snap support
+case "$chezmoi" in /snap/*) chezmoi="" ;; esac
+
+if [ -z "$chezmoi" ]; then
 	bin_dir="${HOME}/.local/bin"
 	chezmoi="${bin_dir}/chezmoi"
 	echo "Installing chezmoi to '${chezmoi}'" >&2
