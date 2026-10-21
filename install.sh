@@ -12,8 +12,10 @@ if [ -d "$HOME/.config/chezmoi" ]; then
 fi
 
 chezmoi="$(command -v chezmoi || true)"
-# snap-provided chezmoi can't run in environments without snap support
-case "$chezmoi" in /snap/*) chezmoi="" ;; esac
+# ignore snap-provided chezmoi if this user can't run snaps
+case "$chezmoi" in
+/snap/*) "$chezmoi" --version >/dev/null 2>&1 || chezmoi="" ;;
+esac
 
 if [ -z "$chezmoi" ]; then
 	bin_dir="${HOME}/.local/bin"
