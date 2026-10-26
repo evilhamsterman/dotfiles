@@ -59,5 +59,11 @@ Use the native `kubectl` wait and watch features rather than for loops when wait
 - Every QIT Jira Epic assigned to me must have an associated Obsidian project. Obsidian projects do not require an Epic; when one exists, link it in the project note's `## Status` section as `**Jira Epic:**` (https://qumulo.atlassian.net/browse/QIT-<n>).
 - A project with a linked Epic can be archived once the Epic is Done. Check the Epic status before archiving.
 
+## Jira Change Tickets
+- System changes (firewalls, infrastructure, anything an admin applies) are `[System] Change` issues in project QITSD, modelled on QITSD-21324. Plain Task is wrong: QITSD has no `Change` type and QLAB's is lab-only.
+- Set the **Approvers** field (`customfield_11502`) instead of listing reviewers in the body: Cliff Miller `557058:c7d4cf9e-b216-40f4-ac1a-bf23eb61a93e`, Brandon Calhoun `712020:a4f2ec2f-3ae0-4a70-9901-f47a4bcd92a5`, Honore Asenek `5e2b431a895d5b0c97052e8f`, Sergey Mkrtumov `712020:b846ad1f-e0a9-49e8-bfd0-cb2a590b6fcc`. Assign to me.
+- Body sections: Change, Pull request, Why, Impact, Plan (exact copy-paste commands per host), Verification, Rollback, Testing, Risk, Change window (TBD unless given).
+- The Jira tool cannot add other people as watchers.
+
 ## Concurrency
 - Use agents for concurrency when possible: run independent work in parallel subagents rather than sequentially.
