@@ -1,4 +1,8 @@
+function Invoke-Starship-TransientFunction {
+    &starship module character
+}
 Invoke-Expression (&starship init powershell)
+Enable-TransientPrompt
 $Env:SHELL = "pwsh.exe"
 $Env:EDITOR = "code --wait"
 $Env:Path += ";$HOME\.local\bin"
