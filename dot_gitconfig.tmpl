@@ -10,9 +10,9 @@
     email = "{{ .email }}"
 {{ with lookPath "gh" }}
 [credential "https://github.com"]
-    helper = !{{ . }} auth git-credential
+    helper = "!\"{{ . | replace "\\" "/" }}\" auth git-credential"
 [credential "https://gist.github.com"]
-    helper = !{{ . }} auth git-credential
+    helper = "!\"{{ . | replace "\\" "/" }}\" auth git-credential"
 {{ end }}
 {{ end }}
 

@@ -2,6 +2,7 @@
 Brewfile
 {{ end }}
 {{ if eq .chezmoi.os "windows" }}
+create-ai-directories.sh
 .claude/statusline.sh
 .config/fish
 .config/systemd
