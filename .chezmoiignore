@@ -2,6 +2,7 @@
 Brewfile
 {{ end }}
 {{ if eq .chezmoi.os "windows" }}
+.claude/statusline.sh
 .config/fish
 .config/systemd
 .config/yay
@@ -12,6 +13,7 @@ install.sh
 win-packages.json
 {{ if eq .chezmoi.os "linux" "darwin" }}
 AppData/
+.claude/statusline.ps1
 {{ end }}
 # AI tool directories - created by run_once script, contents are untracked
 .local/aibin/**
