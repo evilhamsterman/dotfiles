@@ -15,6 +15,7 @@ CONFIG: dict[str, Any] = {
     "remoteControlAtStartup": True,
     "permissions": {"defaultMode": "auto"},
     "editorMode": "vim",
+    "statusLine": {"type": "command", "command": "~/.claude/statusline.sh"},
 }
 
 DEVICE_SPECIFIC_KEYS: tuple[str, ...] = ("model", "thinking")
